@@ -11,7 +11,9 @@ public class Aerolinea {
         while (op != 5) {
             Limpiar();
             System.out.println(header);
-            System.out.println("1: ");
+            System.out.println("1: Agregar Vuelos");
+            System.out.println("2: Vender Vuelos");
+            System.out.println("3: ");
         }
     }
     public static void Limpiar(){
