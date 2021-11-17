@@ -1,5 +1,8 @@
 package Aeronave;
 
-public class GloboAeros {
+public class GloboAeros extends Aerostatos{
+    public GloboAeros(){
+        
+    }
     
 }

@@ -1,5 +1,8 @@
 package Aeronave;
 
-public class PrivadoH {
+public class PrivadoH extends Helicoptero{
+    public PrivadoH(){
+        
+    }
     
 }

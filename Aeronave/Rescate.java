@@ -1,5 +1,8 @@
 package Aeronave;
 
-public class Rescate {
+public class Rescate extends Helicoptero{
+    public Rescate(){
+        
+    }
     
 }
