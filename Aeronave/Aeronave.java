@@ -1,9 +1,11 @@
 package Aeronave;
 
 public class Aeronave{
+    //Uso de encapsulamiento
     private int altitud;
     private int tripulacion;
     private String nombre; 
+
     //Constructor Aeronave
     public Aeronave(int altitud, int tripulacion, String nombre){
         this.setAltitud(altitud);
@@ -11,8 +13,12 @@ public class Aeronave{
         this.setNombre(nombre);
     }
 
-    public void Volar(){
+    public void Volar(String destino){
         
+    }
+    //Sobrecarga de métodos 
+    public void Volar(String destino, String paradas){
+
     }
 
     public int getTripulacion() {
