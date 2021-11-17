@@ -8,6 +8,9 @@ public class MilitarA extends Avion{
         this.setArmas(armas); 
         this.setBrigada(brigada);
     }
+    public String listarDatos(){
+        return super.listarDatos() + "\n Armas: " +armas + "\n Brigada" + brigada +"\n";
+    }
     public int getBrigada() {
         return brigada;
     }

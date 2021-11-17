@@ -9,6 +9,9 @@ public class Aeronave{
         this.setTripulacion(tripulacion);
         this.setNombre(nombre);
     }
+    public String listarDatos(){
+        return "\nAeronave: " + this.getClass().getSimpleName() + "\n Nombre: " + altitud + "\n Tripulacion: " + tripulacion + "\n Nombre: " + nombre + "\n";
+    }
     public int getTripulacion() {
         return tripulacion;
     }
