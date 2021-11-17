@@ -12,6 +12,25 @@ public class Avion extends Aeronave{
         //Uso de super
         return super.listarDatos() + "\n Turbinas: " + turbinas + "\n Tren de aterrizaje: " + trenAterrizaje +"\n";
     }
+    public void Volar(String destino){
+        if(destino != null){
+            System.out.println("Comenzando viaje...");
+            System.out.println(".");
+            System.out.println(".");
+            System.out.println(".");
+            System.out.println("Llegando al destino");
+        }
+    }
+    //Sobrecarga de métodos
+    public void Volar(String destino, int paradas){
+        if(destino != null){
+            System.out.println("Comenzando viaje...");
+            for(int i = 0; i< paradas; i++){
+                System.out.println("Llegando a la parada numero " + i);
+            }
+            System.out.println("Llegando al destino");
+        }
+    }
     public String getTurbinas() {
         return turbinas;
     }
