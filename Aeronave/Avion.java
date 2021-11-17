@@ -9,6 +9,7 @@ public class Avion extends Aeronave{
         this.setTrenAterrizaje(trenAterrizaje);
     }
     public String listarDatos(){
+        //Uso de super
         return super.listarDatos() + "\n Turbinas: " +turbinas + "\n Tren Aterrizaje" + trenAterrizaje +"\n";
     }
     public String getTurbinas() {
