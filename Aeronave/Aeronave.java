@@ -15,4 +15,8 @@ public class Aeronave{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void Volar(){
+        
+    }
 }
