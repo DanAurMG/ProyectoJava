@@ -12,6 +12,10 @@ public class Hangar{
     public Hangar(){
         lista = new ArrayList<>();
     }
+    public static void LimpiarConsola(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
     public void registrar(Aeronave aeronave){
         lista.add(aeronave);
     }
@@ -29,6 +33,8 @@ public class Hangar{
         menu();
     }
     public static void listar(){
+        if(hangar.getLista() != null)
+        System.out.println("No hay elementos registrados");
         for(Aeronave aeronave : hangar.getLista()){
             System.out.println(aeronave.listarDatos());
         }
@@ -41,6 +47,7 @@ public class Hangar{
         System.out.println("5. Salir");
         System.out.println("Elija la opcion: ");
         int op = teclas.nextInt();
+        LimpiarConsola();
         switch (op) {
             case 1:
                 agregar();
@@ -67,6 +74,7 @@ public class Hangar{
         System.out.println("3. Cohete");
         System.out.println("4. Aerostatos");
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch (opc) {
             case 1:
                 avion();
@@ -88,6 +96,7 @@ public class Hangar{
         System.out.println("3. Cohete");
         System.out.println("4. Aerostatos");
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch (opc) {
             case 1:
                 avion();
@@ -109,6 +118,7 @@ public class Hangar{
         System.out.println("3. Cohete");
         System.out.println("4. Aerostatos");
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch (opc) {
             case 1:
                 avion();
@@ -130,6 +140,7 @@ public class Hangar{
         System.out.println("3. Carga");
         System.out.println("4. Privada");
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch (opc) {
             case 1:
                 miliA();
@@ -152,6 +163,7 @@ public class Hangar{
         System.out.println("2. Rescate");
         System.out.println("3. Privado");
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch(opc){
             case 1:
                 miliH();
@@ -170,6 +182,7 @@ public class Hangar{
         System.out.println("1. Dirigible");
         System.out.println("2. Globo Aeorstatico");        
         int opc = teclas.nextInt();
+        LimpiarConsola();
         switch(opc){
             case 1:
                 dirig();
@@ -183,7 +196,7 @@ public class Hangar{
     }
     public static void cohete(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -196,11 +209,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void miliA(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -208,7 +222,7 @@ public class Hangar{
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
         String turbinas =  teclas.next();
-        System.out.println("Ingrese mod tren de aterrizaje: ");
+        System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Ingrese tipo de armas: ");
         String armas = teclas.next();
@@ -219,11 +233,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void comer(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -231,7 +246,7 @@ public class Hangar{
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
         String turbinas =  teclas.next();
-        System.out.println("Ingrese mod tren de aterrizaje: ");
+        System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Ingrese la capacidad de pasajeros: ");
         int pasajeros = teclas.nextInt();        
@@ -240,11 +255,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void carga(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -252,7 +268,7 @@ public class Hangar{
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
         String turbinas =  teclas.next();
-        System.out.println("Ingrese mod tren de aterrizaje: ");
+        System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Ingrese el estatus del manifiesto: ");
         String manifiesto = teclas.next();
@@ -263,11 +279,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void priv(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -275,7 +292,7 @@ public class Hangar{
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
         String turbinas =  teclas.next();
-        System.out.println("Ingrese mod tren de aterrizaje: ");
+        System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Introduzca el nombre del dueno: ");
         String dueno = teclas.next();
@@ -286,11 +303,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void miliH(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -307,11 +325,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void resc(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -328,11 +347,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void privH(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -347,11 +367,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void dirig(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -368,11 +389,12 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
     public static void globo(){
         System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima: ");
+        System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
@@ -389,6 +411,7 @@ public class Hangar{
         System.out.println("--------------------------");
         System.out.println("-----REGISTRO GUARDADO----");
         System.out.println("--------------------------");
+        LimpiarConsola();
         menu();
     }
 }

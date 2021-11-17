@@ -1,5 +1,3 @@
-package Aeronave;
-
 import Aeronave.Hangar;
 
 public class main {
