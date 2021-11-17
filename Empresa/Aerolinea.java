@@ -13,7 +13,8 @@ public class Aerolinea {
             System.out.println(header);
             System.out.println("1: Agregar Vuelos");
             System.out.println("2: Vender Vuelos");
-            System.out.println("3: ");
+            System.out.println("Wenas");
+            System.out.println("3: salir");
         }
     }
     public static void Limpiar(){
