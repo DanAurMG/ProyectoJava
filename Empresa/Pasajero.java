@@ -3,6 +3,7 @@ package Empresa;
 public class Pasajero{
     private String nombre;
     private int asiento;
+    
     public String getNombre(){
         return nombre;
     }
