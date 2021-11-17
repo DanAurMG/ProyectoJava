@@ -1,5 +1,5 @@
 package Empresa;
-public class Vuelos extends Sucursal{
+public class Vuelos extends Aerolinea{
     private String destino;
     private String tipo;
     private String fecha;

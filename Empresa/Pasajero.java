@@ -1,8 +1,6 @@
-package Empresa.Pasajeros;
+package Empresa;
 
-import Empresa.Aviones.Asientos.Clase;
-
-public class Pasajero extends Clase{
+public class Pasajero{
     private String nombre;
     private int asiento;
     public String getNombre(){

@@ -1,6 +1,4 @@
-package Empresa.Aviones;
-
-import Empresa.Avion;
+package Empresa;
 
 public class Asiento extends Avion{
     private int numero;

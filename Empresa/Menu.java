@@ -1,8 +1,6 @@
-package Empresa.PersonalA;
+package Empresa;
 
-import Empresa.Aviones.Asientos.Clase;
-
-public class Menu extends Clase {
+public class Menu{
     private String proteina;
     private String bebida;
     private String postre;

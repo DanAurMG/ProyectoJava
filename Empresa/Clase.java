@@ -1,6 +1,4 @@
-package Empresa.Aviones.Asientos;
-
-import Empresa.Aviones.Asiento;
+package Empresa;
 
 public class Clase extends Asiento{
     private String descripcion;
