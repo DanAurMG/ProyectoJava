@@ -1,13 +1,25 @@
 package Aeronave;
 
 public class Aeronave{
-    protected static int altitud;
-    protected static int tripulacion;
+    private int altitud;
+    private int tripulacion;
     private String nombre; 
     public Aeronave(int altitud, int tripulacion, String nombre){
-        Aeronave.altitud = altitud;
-        Aeronave.tripulacion = tripulacion;
+        this.setAltitud(altitud);
+        this.setTripulacion(tripulacion);
         this.setNombre(nombre);
+    }
+    public int getTripulacion() {
+        return tripulacion;
+    }
+    public void setTripulacion(int tripulacion) {
+        this.tripulacion = tripulacion;
+    }
+    public int getAltitud() {
+        return altitud;
+    }
+    public void setAltitud(int altitud) {
+        this.altitud = altitud;
     }
     public String getNombre() {
         return nombre;
