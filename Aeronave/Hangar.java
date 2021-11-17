@@ -42,11 +42,21 @@ public class Hangar{
             System.out.println("No hay elementos registrados");
         menu();
     }
+    public static void listarEsp(){
+        int bandera = 0;
+        for(Aeronave aeronave : hangar.getLista()){
+            System.out.println(aeronave.general());
+            bandera++;
+        }
+        if(bandera == 0)
+            System.out.println("No hay elementos registrados");
+        menu();
+    }
 
     public static void menu(){
         System.out.println("1. Agregar");
-        System.out.println("2. Listar");
-        System.out.println("3. Buscar");
+        System.out.println("2. Listado general");
+        System.out.println("3. Listado tecnico");
         System.out.println("4. Eliminar");
         System.out.println("5. Salir");
         System.out.println("Elija la opcion: ");
@@ -61,7 +71,7 @@ public class Hangar{
                 listar();
                 break;
             case 3: 
-                busqueda();
+                listarEsp();
                 break;
             case 4: 
                 eliminar();
