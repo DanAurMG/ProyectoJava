@@ -3,10 +3,26 @@ package Empresa.Aviones;
 import Empresa.Avion;
 
 public class Motor extends Avion{
-    private String Modelo;
-    private String Marca;
-    private String Estatus;
-    protected int NumSerie; 
-
-    
+    private String modelo;
+    private String marca;
+    private String estatus;
+    protected int numSerie;
+    public String getModelo(){
+        return modelo;
+    }
+    public void setModelo(){
+        this.modelo = modelo;
+    }
+    public String getMarca(){
+        return marca;
+    }
+    public void setMarca(){
+        this.marca = marca;
+    }
+    public String getEstatus(){
+        return estatus;
+    }
+    public void setEstatus(){
+        this.estatus = estatus;
+    }
 }
