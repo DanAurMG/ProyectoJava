@@ -10,7 +10,7 @@ public class MilitarA extends Avion{
     }
     public String listarDatos(){
         //Uso de super
-        return super.listarDatos() + "\n Armas: " +armas + "\n Brigada" + brigada +"\n";
+        return super.listarDatos() + "\n Armas: " +armas + "\n Brigada: " + brigada + "\n";
     }
     public int getBrigada() {
         return brigada;

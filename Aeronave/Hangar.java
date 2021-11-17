@@ -33,12 +33,16 @@ public class Hangar{
         menu();
     }
     public static void listar(){
-        if(hangar.getLista() != null)
-        System.out.println("No hay elementos registrados");
+        int bandera = 0;
         for(Aeronave aeronave : hangar.getLista()){
-            System.out.println(aeronave.listarDatos());
+            System.out.println(aeronave.general());
+            bandera++;
         }
+        if(bandera == 0)
+            System.out.println("No hay elementos registrados");
+        menu();
     }
+
     public static void menu(){
         System.out.println("1. Agregar");
         System.out.println("2. Listar");
@@ -46,6 +50,7 @@ public class Hangar{
         System.out.println("4. Eliminar");
         System.out.println("5. Salir");
         System.out.println("Elija la opcion: ");
+        
         int op = teclas.nextInt();
         LimpiarConsola();
         switch (op) {
@@ -71,8 +76,8 @@ public class Hangar{
     public static void agregar(){
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
-        System.out.println("3. Cohete");
-        System.out.println("4. Aerostatos");
+        System.out.println("3. Aerostatos");
+        System.out.println("4. Cohete");
         int opc = teclas.nextInt();
         LimpiarConsola();
         switch (opc) {

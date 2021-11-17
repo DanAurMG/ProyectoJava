@@ -12,8 +12,11 @@ public class Aeronave{
         this.setTripulacion(tripulacion);
         this.setNombre(nombre);
     }
+    public String general(){
+        return "\nAeronave: " + this.getClass().getSimpleName() + "\n Altitud: " + altitud + "m" + "\n Tripulacion en cantidad: " + tripulacion + "\n Nombre aeronave: " + nombre + "\n";
+    }
     public String listarDatos(){
-        return "\nAeronave: " + this.getClass().getSimpleName() + "\n Nombre: " + altitud + "\n Tripulacion: " + tripulacion + "\n Nombre: " + nombre + "\n";
+        return "\nAeronave: " + this.getClass().getSimpleName() + "\n Altitud: " + altitud + "m" + "\n Tripulacion en cantidad: " + tripulacion + "\n Nombre aeoranve: " + nombre + "\n";
     }
     public int getTripulacion() {
         return tripulacion;

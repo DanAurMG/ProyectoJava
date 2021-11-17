@@ -5,6 +5,10 @@ public class Cohete extends Aeronave{
     public Cohete(int altitud, int tripulacion, String nombre, String propulsor){
         super(altitud, tripulacion, nombre);
         this.setPropulsor(propulsor);
+    }    
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Populsor: " + propulsor;
     }
     public String getPropulsor() {
         return propulsor;
