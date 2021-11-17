@@ -14,13 +14,13 @@ public class Piloto extends Personal{
     public String getCopiloto(){
         return Copiloto;
     }
-    public void setModelo(){
+    public void setCopiloto(){
         this.Copiloto= Copiloto;
     }
     public int getHrsVuelo(){
         return HrsVuelo;
     }
-    public void setMarca(){
+    public void setHrsVuelo(){
         this.HrsVuelo = HrsVuelo;
     }
 }
