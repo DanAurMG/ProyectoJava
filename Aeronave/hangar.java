@@ -3,13 +3,13 @@ package Aeronave;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.print.DocFlavor.STRING;
 
-public class hangar {
+public class Hangar{
     //Uso de objetos de clases agregadas 
     private List<Aeronave>lista;
-    public hangar(){
+    
+    public Hangar(){
         lista = new ArrayList<>();
     }
     public void registrar(Aeronave aeronave){
@@ -19,7 +19,7 @@ public class hangar {
         return lista;
     }
     static Scanner teclas = new Scanner (System.in);
-    static hangar hangar = new hangar();
+    static Hangar hangar = new Hangar();
     public static void salir(){
         System.out.println("\n Programa finalizado");
         System.exit(0);
