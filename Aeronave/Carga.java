@@ -8,6 +8,11 @@ public class Carga extends Avion{
         this.setSuministros(suministros);
         this.setManifiesto(manifiesto);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Estado del manifiesto: " + manifiesto + "\n Suministros a bordo: " + suministros + "\n";
+    }
+
     public String getManifiesto() {
         return manifiesto;
     }

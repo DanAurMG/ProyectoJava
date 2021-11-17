@@ -8,6 +8,10 @@ public class Dirigible extends Aerostatos{
         this.setTimonel(timonel);
         this.setEmpresa(empresa);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Empresa: " + empresa + "\n Estado del timonel: " + timonel + "\n";
+    }
     public String getEmpresa() {
         return empresa;
     }

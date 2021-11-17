@@ -45,7 +45,7 @@ public class Hangar{
     public static void listarEsp(){
         int bandera = 0;
         for(Aeronave aeronave : hangar.getLista()){
-            System.out.println(aeronave.general());
+            System.out.println(aeronave.listarDatos());
             bandera++;
         }
         if(bandera == 0)

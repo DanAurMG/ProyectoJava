@@ -8,6 +8,10 @@ public class Rescate extends Helicoptero{
         this.setHospital(hospital);
         this.setEquipo(equipo);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Equipo: " + equipo + "\n Clinica a la que pertenece: " + hospital + "\n";
+    }
     public String getEquipo() {
         return equipo;
     }

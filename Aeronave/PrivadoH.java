@@ -7,6 +7,10 @@ public class PrivadoH extends Helicoptero{
         this.setHeladeras(heladeras);
         
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Modelo heladeras: " + heladeras + "\n";
+    }
     public String getHeladeras() {
         return heladeras;
     }

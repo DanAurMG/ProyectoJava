@@ -8,6 +8,10 @@ public class MilitarH extends Helicoptero{
         this.setArmas(armas);
         this.setBrigada(brigada);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Brigada: " + brigada + "\n Armas: " + armas + "\n";
+    }
     public int getBrigada() {
         return brigada;
     }

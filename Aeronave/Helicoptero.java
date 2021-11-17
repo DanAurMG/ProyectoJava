@@ -6,6 +6,10 @@ public class Helicoptero extends Aeronave{
         super(altitud, tripulacion, nombre);
         this.setHelices(helices);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Modelo helices: " + helices + "\n";
+    }
     public String getHelices() {
         return helices;
     }

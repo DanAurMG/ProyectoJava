@@ -8,6 +8,10 @@ public class GloboAeros extends Aerostatos{
         this.setValvula(valvula);
         this.setLastre(lastre);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Tipo de lastre: " + lastre + "\n Material de la valvula: " + valvula + "\n";
+    }
     public String getLastre() {
         return lastre;
     }

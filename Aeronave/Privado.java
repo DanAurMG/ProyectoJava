@@ -8,6 +8,10 @@ public class Privado extends Avion{
         this.setDueno(dueno);
         this.setEntretenimiento(entretenimiento);
     }
+    public String listarDatos(){
+        //Uso de super
+        return super.listarDatos() + "\n Entretenimiento a bordo: " + entretenimiento + "\n Dueno: " + dueno + "\n";
+    }
     public String getEntretenimiento() {
         return entretenimiento;
     }
