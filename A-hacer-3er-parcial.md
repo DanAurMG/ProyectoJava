@@ -1,0 +1,4 @@
+-Excepciones (TRY-CATCH)
+-Java swing (eventos)
+-uso de la palabra interface ()
+-polimorfismo() 
