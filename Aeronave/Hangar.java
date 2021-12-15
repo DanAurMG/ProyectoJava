@@ -4,14 +4,75 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import javax.print.DocFlavor.STRING;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class Hangar{
+public class Hangar extends JFrame implements ActionListener{
+    //Declaración del tamaño del Frame 
+    private static final int WIDTH = 500;
+	private static final int HEIGHT = 400;
+    //Declaración de las etiquetas para cada caso
+    private JButton Agregar, ListGen, ListTec, Eliminar, Salir,Avion,Helicoptero,Aerostato,Cohete;
     //Uso de objetos de clases agregadas 
     private List<Aeronave>lista;
     
     public Hangar(){
         lista = new ArrayList<>();
+        
+        setTitle("Practica 2 - Munoz Gonzalez, Hernandez Vergara ");
+		setLayout(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        Agregar = new JButton("Dar de alta");
+        ListGen = new JButton("Listado general");
+        ListTec = new JButton("Listado Tecnico");
+        Eliminar = new JButton("Eliminar");
+        Salir = new JButton("Salir");
+        Avion = new JButton("Avion");
+        Helicoptero = new JButton("Helicoptero");
+
+        Agregar.setBounds(175, 30, 150, 30);
+        Avion.setBounds(175, 30, 150, 30);
+        ListGen.setBounds(175, 90, 150, 30);
+        ListTec.setBounds(175, 150, 150, 30);
+        Eliminar.setBounds(175, 210, 150, 30);
+        Salir.setBounds(175, 270, 150, 30);
+        
+
+        add(Agregar);
+        add(ListGen);
+        add(ListTec);
+        add(Eliminar);
+        add(Salir);
+        add(Avion);
+
+        Agregar.addActionListener(this);
+        ListGen.addActionListener(this);
+        ListTec.addActionListener(this);
+        Eliminar.addActionListener(this);
+        Salir.addActionListener(this);
+        Avion.addActionListener(this);
+
+        Avion.setVisible(false);
+        //Comentario pra subir el git abr
+		
     }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == Agregar){
+            JOptionPane.showMessageDialog(null, "Esta intentando agregar");
+            Agregar.setVisible(false);
+            Avion.setVisible(true);
+            if(e.getSource() == Avion){
+                JOptionPane.showMessageDialog(null, "Va adar de alta un avion");
+            }
+            //agregar();
+        }
+            
+    }
+
     public static void LimpiarConsola(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -22,8 +83,10 @@ public class Hangar{
     public List<Aeronave> getLista(){
         return lista;
     }
+
     static Scanner teclas = new Scanner (System.in);
     static Hangar hangar = new Hangar();
+
     public static void salir(){
         System.out.println("\n Programa finalizado");
         System.exit(0);
@@ -257,7 +320,7 @@ public class Hangar{
         int altitud = teclas.nextInt();
         System.out.println("Ingrese numero de tripulantes: ");
         int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
+        System.out.println("Ingrese nombre de la aeronave: ");        
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
         String turbinas =  teclas.next();
@@ -429,4 +492,5 @@ public class Hangar{
         LimpiarConsola();
         menu();
     }
+    
 }
