@@ -8,20 +8,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Hangar extends JFrame implements ActionListener{
-    //Declaración del tamaño del Frame 
+public class Hangar extends JFrame implements ActionListener {
+    // Declaración del tamaño del Frame
     private static final int WIDTH = 500;
-	private static final int HEIGHT = 400;
-    //Declaración de las etiquetas para cada caso
-    private JButton Agregar, ListGen, ListTec, Eliminar, Salir,Avion,Helicoptero,Aerostato,Cohete;
-    //Uso de objetos de clases agregadas 
-    private List<Aeronave>lista;
-    
-    public Hangar(){
+    private static final int HEIGHT = 400;
+    // Declaración de las etiquetas para cada caso
+    private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
+    private JButton Avion, Helicoptero, Aerostato, Cohete;
+    // Uso de objetos de clases agregadas
+    private List<Aeronave> lista;
+
+    public Hangar() {
         lista = new ArrayList<>();
-        
+
         setTitle("Practica 2 - Munoz Gonzalez, Hernandez Vergara ");
-		setLayout(null);
+        setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Agregar = new JButton("Dar de alta");
@@ -29,16 +30,27 @@ public class Hangar extends JFrame implements ActionListener{
         ListTec = new JButton("Listado Tecnico");
         Eliminar = new JButton("Eliminar");
         Salir = new JButton("Salir");
+
+        // Aeronaves
         Avion = new JButton("Avion");
         Helicoptero = new JButton("Helicoptero");
+        Aerostato = new JButton("Aerostato");
+        Cohete = new JButton("Cohete");
 
         Agregar.setBounds(175, 30, 150, 30);
         Avion.setBounds(175, 30, 150, 30);
+
         ListGen.setBounds(175, 90, 150, 30);
+        Helicoptero.setBounds(175, 90, 150, 30);
+
         ListTec.setBounds(175, 150, 150, 30);
+        Aerostato.setBounds(175, 150, 150, 30);
+
         Eliminar.setBounds(175, 210, 150, 30);
+        Cohete.setBounds(175, 210, 150, 30);
+        ;
+
         Salir.setBounds(175, 270, 150, 30);
-        
 
         add(Agregar);
         add(ListGen);
@@ -46,6 +58,9 @@ public class Hangar extends JFrame implements ActionListener{
         add(Eliminar);
         add(Salir);
         add(Avion);
+        add(Helicoptero);
+        add(Aerostato);
+        add(Cohete);
 
         Agregar.addActionListener(this);
         ListGen.addActionListener(this);
@@ -53,100 +68,121 @@ public class Hangar extends JFrame implements ActionListener{
         Eliminar.addActionListener(this);
         Salir.addActionListener(this);
         Avion.addActionListener(this);
+        Helicoptero.addActionListener(this);
+        Aerostato.addActionListener(this);
+        Cohete.addActionListener(this);
 
         Avion.setVisible(false);
-        //Comentario pra subir el git abr
-		
-    }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == Agregar){
-            JOptionPane.showMessageDialog(null, "Esta intentando agregar");
-            Agregar.setVisible(false);
-            Avion.setVisible(true);
-            if(e.getSource() == Avion){
-                JOptionPane.showMessageDialog(null, "Va adar de alta un avion");
-            }
-            //agregar();
-        }
-            
+        Helicoptero.setVisible(false);
+        Aerostato.setVisible(false);
+        Cohete.setVisible(false);
+
     }
 
-    public static void LimpiarConsola(){
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == Salir) {
+            salir();
+        } else 
+            if (e.getSource() == Agregar) {
+                JOptionPane.showMessageDialog(null, "Esta intentando agregar");
+                Agregar.setVisible(false);
+                ListGen.setVisible(false);
+                ListTec.setVisible(false);
+                Eliminar.setVisible(false);
+                Avion.setVisible(true);
+                Helicoptero.setVisible(true);
+                Cohete.setVisible(true);
+                Aerostato.setVisible(true);
+                agregar();
+            } else 
+                if (e.getSource() == Avion) {
+                    JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
+
+                }
+
+    }
+
+    public static void LimpiarConsola() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-    public void registrar(Aeronave aeronave){
+
+    public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
     }
-    public List<Aeronave> getLista(){
+
+    public List<Aeronave> getLista() {
         return lista;
     }
 
-    static Scanner teclas = new Scanner (System.in);
+    static Scanner teclas = new Scanner(System.in);
     static Hangar hangar = new Hangar();
 
-    public static void salir(){
+    public static void salir() {
         System.out.println("\n Programa finalizado");
         System.exit(0);
     }
-    public static void error(){
+
+    public static void error() {
         System.out.println("\n Opcion Incorrecta");
         menu();
     }
-    public static void listar(){
+
+    public static void listar() {
         int bandera = 0;
-        for(Aeronave aeronave : hangar.getLista()){
+        for (Aeronave aeronave : hangar.getLista()) {
             System.out.println(aeronave.general());
             bandera++;
         }
-        if(bandera == 0)
-            System.out.println("No hay elementos registrados");
-        menu();
-    }
-    public static void listarEsp(){
-        int bandera = 0;
-        for(Aeronave aeronave : hangar.getLista()){
-            System.out.println(aeronave.listarDatos());
-            bandera++;
-        }
-        if(bandera == 0)
+        if (bandera == 0)
             System.out.println("No hay elementos registrados");
         menu();
     }
 
-    public static void menu(){
+    public static void listarEsp() {
+        int bandera = 0;
+        for (Aeronave aeronave : hangar.getLista()) {
+            System.out.println(aeronave.listarDatos());
+            bandera++;
+        }
+        if (bandera == 0)
+            System.out.println("No hay elementos registrados");
+        menu();
+    }
+
+    public static void menu() {
         System.out.println("1. Agregar");
         System.out.println("2. Listado general");
         System.out.println("3. Listado tecnico");
         System.out.println("4. Eliminar");
         System.out.println("5. Salir");
         System.out.println("Elija la opcion: ");
-        
+
         int op = teclas.nextInt();
         LimpiarConsola();
         switch (op) {
             case 1:
                 agregar();
                 break;
-            case 2: 
+            case 2:
                 listar();
                 break;
-            case 3: 
+            case 3:
                 listarEsp();
                 break;
-            case 4: 
+            case 4:
                 eliminar();
                 break;
-            case 5: 
+            case 5:
                 salir();
                 break;
             default:
                 break;
         }
-    }    
-    public static void agregar(){
+    }
+
+    public static void agregar() {
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
         System.out.println("3. Aerostatos");
@@ -157,18 +193,19 @@ public class Hangar extends JFrame implements ActionListener{
             case 1:
                 avion();
                 break;
-            case 2: 
+            case 2:
                 heli();
                 break;
-            case 3: 
+            case 3:
                 aero();
-            case 4: 
+            case 4:
                 cohete();
             default:
                 break;
         }
     }
-    public static void busqueda(){
+
+    public static void busqueda() {
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
         System.out.println("3. Cohete");
@@ -179,18 +216,19 @@ public class Hangar extends JFrame implements ActionListener{
             case 1:
                 avion();
                 break;
-            case 2: 
+            case 2:
                 heli();
                 break;
-            case 3: 
+            case 3:
                 aero();
-            case 4: 
+            case 4:
                 cohete();
             default:
                 break;
         }
     }
-    public static void eliminar(){
+
+    public static void eliminar() {
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
         System.out.println("3. Cohete");
@@ -201,17 +239,18 @@ public class Hangar extends JFrame implements ActionListener{
             case 1:
                 avion();
                 break;
-            case 2: 
+            case 2:
                 heli();
                 break;
-            case 3: 
+            case 3:
                 aero();
-            case 4: 
+            case 4:
                 cohete();
             default:
                 break;
         }
     }
+
     public static void avion() {
         System.out.println("1. Militar");
         System.out.println("2. Comercial");
@@ -223,26 +262,27 @@ public class Hangar extends JFrame implements ActionListener{
             case 1:
                 miliA();
                 break;
-            case 2: 
+            case 2:
                 comer();
                 break;
-            case 3: 
+            case 3:
                 carga();
                 break;
-            case 4: 
+            case 4:
                 priv();
                 break;
             default:
                 break;
         }
     }
-    public static void heli(){
+
+    public static void heli() {
         System.out.println("1. Militar");
         System.out.println("2. Rescate");
         System.out.println("3. Privado");
         int opc = teclas.nextInt();
         LimpiarConsola();
-        switch(opc){
+        switch (opc) {
             case 1:
                 miliH();
                 break;
@@ -255,13 +295,14 @@ public class Hangar extends JFrame implements ActionListener{
             default:
                 break;
         }
-    }    
-    public static void aero(){
+    }
+
+    public static void aero() {
         System.out.println("1. Dirigible");
-        System.out.println("2. Globo Aeorstatico");        
+        System.out.println("2. Globo Aeorstatico");
         int opc = teclas.nextInt();
         LimpiarConsola();
-        switch(opc){
+        switch (opc) {
             case 1:
                 dirig();
                 break;
@@ -272,7 +313,8 @@ public class Hangar extends JFrame implements ActionListener{
                 break;
         }
     }
-    public static void cohete(){
+
+    public static void cohete() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -290,7 +332,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void miliA(){
+
+    public static void miliA() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -299,7 +342,7 @@ public class Hangar extends JFrame implements ActionListener{
         System.out.println("Ingrese nombre de la aeronave: ");
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
-        String turbinas =  teclas.next();
+        String turbinas = teclas.next();
         System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Ingrese tipo de armas: ");
@@ -314,29 +357,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void comer(){
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");        
-        String nombre = teclas.next();
-        System.out.println("Ingrese tipo turbinas: ");
-        String turbinas =  teclas.next();
-        System.out.println("Ingrese modelo de tren de aterrizaje: ");
-        String trenAterrizaje = teclas.next();
-        System.out.println("Ingrese la capacidad de pasajeros: ");
-        int pasajeros = teclas.nextInt();        
-        Comercial com = new Comercial(altitud, tripulantes, nombre, turbinas, trenAterrizaje, pasajeros);
-        hangar.registrar(com);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-    public static void carga(){
+
+    public static void comer() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -345,7 +367,30 @@ public class Hangar extends JFrame implements ActionListener{
         System.out.println("Ingrese nombre de la aeronave: ");
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
-        String turbinas =  teclas.next();
+        String turbinas = teclas.next();
+        System.out.println("Ingrese modelo de tren de aterrizaje: ");
+        String trenAterrizaje = teclas.next();
+        System.out.println("Ingrese la capacidad de pasajeros: ");
+        int pasajeros = teclas.nextInt();
+        Comercial com = new Comercial(altitud, tripulantes, nombre, turbinas, trenAterrizaje, pasajeros);
+        hangar.registrar(com);
+        System.out.println("--------------------------");
+        System.out.println("-----REGISTRO GUARDADO----");
+        System.out.println("--------------------------");
+        LimpiarConsola();
+        menu();
+    }
+
+    public static void carga() {
+        System.out.println("\n SELECCIONE \n");
+        System.out.println("Ingrese altitud maxima en un numero: ");
+        int altitud = teclas.nextInt();
+        System.out.println("Ingrese numero de tripulantes: ");
+        int tripulantes = teclas.nextInt();
+        System.out.println("Ingrese nombre de la aeronave: ");
+        String nombre = teclas.next();
+        System.out.println("Ingrese tipo turbinas: ");
+        String turbinas = teclas.next();
         System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Ingrese el estatus del manifiesto: ");
@@ -360,7 +405,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void priv(){
+
+    public static void priv() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -369,7 +415,7 @@ public class Hangar extends JFrame implements ActionListener{
         System.out.println("Ingrese nombre de la aeronave: ");
         String nombre = teclas.next();
         System.out.println("Ingrese tipo turbinas: ");
-        String turbinas =  teclas.next();
+        String turbinas = teclas.next();
         System.out.println("Ingrese modelo de tren de aterrizaje: ");
         String trenAterrizaje = teclas.next();
         System.out.println("Introduzca el nombre del dueno: ");
@@ -384,7 +430,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void miliH(){
+
+    public static void miliH() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -406,7 +453,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void resc(){
+
+    public static void resc() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -428,7 +476,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void privH(){
+
+    public static void privH() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -448,7 +497,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void dirig(){
+
+    public static void dirig() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -470,7 +520,8 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    public static void globo(){
+
+    public static void globo() {
         System.out.println("\n SELECCIONE \n");
         System.out.println("Ingrese altitud maxima en un numero: ");
         int altitud = teclas.nextInt();
@@ -492,5 +543,5 @@ public class Hangar extends JFrame implements ActionListener{
         LimpiarConsola();
         menu();
     }
-    
+
 }
