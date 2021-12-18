@@ -15,6 +15,8 @@ public class Hangar extends JFrame implements ActionListener {
     // Declaración de las etiquetas para cada caso
     private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
     private JButton Avion, Helicoptero, Aerostato, Cohete;
+    private JButton Militar, Comercial, Carga, Privada, Rescate, Dirigible, GloboAeros;
+    private JTextField campo1, campo2, campo3, campo4, campo5, campo6, campo7;
     // Uso de objetos de clases agregadas
     private List<Aeronave> lista;
 
