@@ -14,9 +14,20 @@ public class Hangar extends JFrame implements ActionListener {
     private static final int HEIGHT = 400;
     // Declaración de las etiquetas para cada caso
     private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
+    //Botones luego de agregar
     private JButton Avion, Helicoptero, Aerostato, Cohete;
+    //Botones para cada tipo específico de aeronave
     private JButton Militar, Comercial, Carga, Privada, Rescate, Dirigible, GloboAeros;
-    private JTextField campo1, campo2, campo3, campo4, campo5, campo6, campo7;
+    //Textos que llevan todas las aeronaves
+    private JTextField Campo1, Campo2, Campo3, CampoA1;
+    //Textos máximos que llevan los aviones
+    private JTextField CampoA2, CampoA3, CampoA4;
+    //Textos máximos que llevan los helicópteros
+    private JTextField CampoH1, CampoH2, CampoH3;
+    //Texto adicional del cohete
+    private JTextField CampoC1;
+    //Textos máximos que llevan los aerostatos
+    private JTextField CampoAr1, CampoAr2, CamporAr3;
     // Uso de objetos de clases agregadas
     private List<Aeronave> lista;
 
@@ -86,22 +97,28 @@ public class Hangar extends JFrame implements ActionListener {
         if (e.getSource() == Salir) {
             salir();
         } else 
-            if (e.getSource() == Agregar) {
-                JOptionPane.showMessageDialog(null, "Esta intentando agregar");
-                Agregar.setVisible(false);
-                ListGen.setVisible(false);
-                ListTec.setVisible(false);
-                Eliminar.setVisible(false);
-                Avion.setVisible(true);
-                Helicoptero.setVisible(true);
-                Cohete.setVisible(true);
-                Aerostato.setVisible(true);
-                agregar();
-            } else 
-                if (e.getSource() == Avion) {
-                    JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
+            if(e.getSource() == ListGen){
+                listar();
+            }else
+                if(e.getSource() == ListTec){
+                    listarEsp();
+                }else
+                    if (e.getSource() == Agregar) {
+                        JOptionPane.showMessageDialog(null, "Esta intentando agregar");
+                        Agregar.setVisible(false);
+                        ListGen.setVisible(false);
+                        ListTec.setVisible(false);
+                        Eliminar.setVisible(false);
+                        Avion.setVisible(true);
+                        Helicoptero.setVisible(true);
+                        Cohete.setVisible(true);
+                        Aerostato.setVisible(true);
+                        agregar();
+                    } else 
+                        if (e.getSource() == Avion) {
+                            JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
 
-                }
+                        }
 
     }
 
