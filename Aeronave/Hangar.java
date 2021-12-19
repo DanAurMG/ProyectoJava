@@ -19,7 +19,10 @@ public class Hangar extends JFrame implements ActionListener {
     // Declaración de las etiquetas para cada caso
     private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
     //Botones luego de agregar
-    private JButton Avion, Helicoptero, Aerostato, Cohete;
+    private  JButton Avion;
+    private JButton Helicoptero;
+    private JButton Aerostato;
+    private JButton Cohete;
     //Botones para cada tipo específico de aeronave
     private JButton Militar, Comercial, Carga, Privada, Rescate, Dirigible, GloboAeros;
     //Textos que llevan todas las aeronaves
@@ -55,37 +58,85 @@ public class Hangar extends JFrame implements ActionListener {
         Helicoptero = new JButton("Helicoptero");
         Aerostato = new JButton("Aerostato");
         Cohete = new JButton("Cohete");
+        // Aviones
+        Militar = new JButton("Militar");
+        Comercial = new JButton("Comercial");
+        Carga = new JButton("Carga");
+        Privada = new JButton("Privada");
+        //Helicoptero
+        Rescate = new JButton("Rescate");
+        //Aerostatos
+        Dirigible = new JButton("Dirigible");
+        GloboAeros = new JButton("GloboAeros");
+        //Dimensiones
         Agregar.setBounds(175, 30, 150, 30);
         Avion.setBounds(175, 30, 150, 30);
+        Militar.setBounds(175, 30, 150, 30);
+        Dirigible.setBounds(175, 30, 150, 30);
         ListGen.setBounds(175, 90, 150, 30);
         Helicoptero.setBounds(175, 90, 150, 30);
+        Privada.setBounds(175, 90, 150, 30);
+        GloboAeros.setBounds(175, 90, 150, 30);
         ListTec.setBounds(175, 150, 150, 30);
         Aerostato.setBounds(175, 150, 150, 30);
+        Carga.setBounds(175, 150, 150, 30);
+        Rescate.setBounds(175, 150, 150, 30);
         Eliminar.setBounds(175, 210, 150, 30);
         Cohete.setBounds(175, 210, 150, 30);
+        Comercial.setBounds(175, 210, 150, 30);
         Salir.setBounds(175, 270, 150, 30);
+        // añadimos funciones
         add(Agregar);
         add(ListGen);
         add(ListTec);
         add(Eliminar);
         add(Salir);
+        // añadimos aeronaves
         add(Avion);
         add(Helicoptero);
         add(Aerostato);
         add(Cohete);
+        // añadimos especificas
+        add(Militar);
+        add(Comercial);
+        add(Carga);
+        add(Privada);
+        add(Rescate);
+        add(GloboAeros);
+        add(Dirigible);
+        //Pa q funcionen los botones
+        // Las funciones
         Agregar.addActionListener(this);
         ListGen.addActionListener(this);
         ListTec.addActionListener(this);
         Eliminar.addActionListener(this);
         Salir.addActionListener(this);
+        // Las aeronaves
         Avion.addActionListener(this);
         Helicoptero.addActionListener(this);
         Aerostato.addActionListener(this);
         Cohete.addActionListener(this);
+        // especificos
+        Militar.addActionListener(this);
+        Comercial.addActionListener(this);
+        Carga.addActionListener(this);
+        Privada.addActionListener(this);
+        Rescate.addActionListener(this);
+        GloboAeros.addActionListener(this);
+        Dirigible.addActionListener(this);
+        //Ocultamos los q no son funciones
         Avion.setVisible(false);
         Helicoptero.setVisible(false);
         Aerostato.setVisible(false);
         Cohete.setVisible(false);
+        //especificos
+        Militar.setVisible(false);
+        Comercial.setVisible(false);
+        Carga.setVisible(false);
+        Privada.setVisible(false);
+        Rescate.setVisible(false);
+        GloboAeros.setVisible(false);
+        Dirigible.setVisible(false);
     }
    
     @Override
@@ -107,9 +158,35 @@ public class Hangar extends JFrame implements ActionListener {
                 Helicoptero.setVisible(true);
                 Cohete.setVisible(true);
                 Aerostato.setVisible(true);
-                agregar();
-            } else if (e.getSource() == Avion) {
-                JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
+                //agregarN(e);
+            }else if(e.getSource() == Avion){
+                Avion.setVisible(false);
+                Helicoptero.setVisible(false);
+                Cohete.setVisible(false);
+                Aerostato.setVisible(false);
+                Militar.setVisible(true);
+                Comercial.setVisible(true);
+                Carga.setVisible(true);
+                Privada.setVisible(true);
+            }else if(e.getSource() == Helicoptero){
+                Avion.setVisible(false);
+                Helicoptero.setVisible(false);
+                Cohete.setVisible(false);
+                Aerostato.setVisible(false);
+                Militar.setVisible(true);
+                Privada.setVisible(true);
+                Rescate.setVisible(true);
+            }else if(e.getSource() == Cohete){
+                JOptionPane.showMessageDialog(null, "Volar cual cohete");
+            }else if(e.getSource() == Aerostato){
+                Avion.setVisible(false);
+                Helicoptero.setVisible(false);
+                Cohete.setVisible(false);
+                Aerostato.setVisible(false);
+                Dirigible.setVisible(true);
+                GloboAeros.setVisible(true);
+            }else if(e.getSource() == Militar){
+                
             }
         } catch (Exception ex) {
             System.err.println(ex);
@@ -174,7 +251,6 @@ public class Hangar extends JFrame implements ActionListener {
         System.out.println("4. Eliminar");
         System.out.println("5. Salir");
         System.out.println("Elija la opcion: ");
-
         int op = teclas.nextInt();
         LimpiarConsola();
         switch (op) {
@@ -199,30 +275,41 @@ public class Hangar extends JFrame implements ActionListener {
     }
 
     public static void agregar() {
-        System.out.println("1. Avion");
-        System.out.println("2. Helicoptero");
-        System.out.println("3. Aerostatos");
-        System.out.println("4. Cohete");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                avion();
-                break;
-            case 2:
-                heli();
-                break;
-            case 3:
-                aero();
-                break;
-            case 4:
-                cohete();
-                break;
-            default:
-                break;
+        try {
+            System.out.println("1. Avion");
+            System.out.println("2. Helicoptero");
+            System.out.println("3. Aerostatos");
+            System.out.println("4. Cohete");
+            int opc = teclas.nextInt();
+            LimpiarConsola();
+            switch (opc) {
+                case 1:
+                    avion();
+                    break;
+                case 2:
+                    heli();
+                    break;
+                case 3:
+                    aero();
+                    break;
+                case 4:
+                    cohete();
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        
+    }/*
+    public static void agregarN(ActionEvent e){
+        System.out.println("a");
+        if(e.getSource() == Avion){
+            JOptionPane.showMessageDialog(null, "Prueba");
         }
     }
-
+*/
     public static void busqueda() {
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
