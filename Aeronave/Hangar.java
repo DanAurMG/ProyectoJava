@@ -3,8 +3,12 @@ package Aeronave;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.management.modelmbean.ModelMBeanInfo;
 import javax.print.DocFlavor.STRING;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -33,38 +37,33 @@ public class Hangar extends JFrame implements ActionListener {
 
     public Hangar() {
         lista = new ArrayList<>();
-
+        ventanaMenu();
+    }
+    @SuppressWarnings("Nya")
+    private void ventanaMenu(){
         setTitle("Practica 2 - Munoz Gonzalez, Hernandez Vergara ");
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        //Declaracion botones
         Agregar = new JButton("Dar de alta");
         ListGen = new JButton("Listado general");
         ListTec = new JButton("Listado Tecnico");
         Eliminar = new JButton("Eliminar");
         Salir = new JButton("Salir");
-
         // Aeronaves
         Avion = new JButton("Avion");
         Helicoptero = new JButton("Helicoptero");
         Aerostato = new JButton("Aerostato");
         Cohete = new JButton("Cohete");
-
         Agregar.setBounds(175, 30, 150, 30);
         Avion.setBounds(175, 30, 150, 30);
-
         ListGen.setBounds(175, 90, 150, 30);
         Helicoptero.setBounds(175, 90, 150, 30);
-
         ListTec.setBounds(175, 150, 150, 30);
         Aerostato.setBounds(175, 150, 150, 30);
-
         Eliminar.setBounds(175, 210, 150, 30);
         Cohete.setBounds(175, 210, 150, 30);
-        ;
-
         Salir.setBounds(175, 270, 150, 30);
-
         add(Agregar);
         add(ListGen);
         add(ListTec);
@@ -74,7 +73,6 @@ public class Hangar extends JFrame implements ActionListener {
         add(Helicoptero);
         add(Aerostato);
         add(Cohete);
-
         Agregar.addActionListener(this);
         ListGen.addActionListener(this);
         ListTec.addActionListener(this);
@@ -84,49 +82,45 @@ public class Hangar extends JFrame implements ActionListener {
         Helicoptero.addActionListener(this);
         Aerostato.addActionListener(this);
         Cohete.addActionListener(this);
-
         Avion.setVisible(false);
         Helicoptero.setVisible(false);
         Aerostato.setVisible(false);
         Cohete.setVisible(false);
-
     }
-
+   
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Salir) {
-            salir();
-        } else 
-            if(e.getSource() == ListGen){
+        try {
+            if (e.getSource() == Salir) {
+                salir();
+            }else if(e.getSource() == ListGen){
                 listar();
-            }else
-                if(e.getSource() == ListTec){
-                    listarEsp();
-                }else
-                    if (e.getSource() == Agregar) {
-                        JOptionPane.showMessageDialog(null, "Esta intentando agregar");
-                        Agregar.setVisible(false);
-                        ListGen.setVisible(false);
-                        ListTec.setVisible(false);
-                        Eliminar.setVisible(false);
-                        Avion.setVisible(true);
-                        Helicoptero.setVisible(true);
-                        Cohete.setVisible(true);
-                        Aerostato.setVisible(true);
-                        agregar();
-                    } else 
-                        if (e.getSource() == Avion) {
-                            JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
-
-                        }
-
+            }else if(e.getSource() == ListTec){
+                listarEsp();
+            }else if (e.getSource() == Agregar) {
+                JOptionPane.showMessageDialog(null, "Esta intentando agregar");
+                Agregar.setVisible(false);
+                ListGen.setVisible(false);
+                ListTec.setVisible(false);
+                Eliminar.setVisible(false);
+                Avion.setVisible(true);
+                Helicoptero.setVisible(true);
+                Cohete.setVisible(true);
+                Aerostato.setVisible(true);
+                agregar();
+            } else if (e.getSource() == Avion) {
+                JOptionPane.showMessageDialog(null, "A ver, para dar de alta");
+            }
+        } catch (Exception ex) {
+            System.err.println(ex);
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
-
+    /*------------------------------------------------ Consola -------------------------------------------------------------------------------------------*/
     public static void LimpiarConsola() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
     public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
     }
@@ -134,7 +128,6 @@ public class Hangar extends JFrame implements ActionListener {
     public List<Aeronave> getLista() {
         return lista;
     }
-
     static Scanner teclas = new Scanner(System.in);
     static Hangar hangar = new Hangar();
 
@@ -154,19 +147,23 @@ public class Hangar extends JFrame implements ActionListener {
             System.out.println(aeronave.general());
             bandera++;
         }
-        if (bandera == 0)
+        if (bandera == 0){
             System.out.println("No hay elementos registrados");
+            JOptionPane.showMessageDialog(null, "No hay elementos registrados");
+        }
         menu();
     }
-
     public static void listarEsp() {
         int bandera = 0;
         for (Aeronave aeronave : hangar.getLista()) {
             System.out.println(aeronave.listarDatos());
+            JOptionPane.showMessageDialog(null, aeronave.listarDatos());
             bandera++;
         }
-        if (bandera == 0)
+        if (bandera == 0){
             System.out.println("No hay elementos registrados");
+            JOptionPane.showMessageDialog(null, "No hay elementos registrados");
+        }
         menu();
     }
 
@@ -217,8 +214,10 @@ public class Hangar extends JFrame implements ActionListener {
                 break;
             case 3:
                 aero();
+                break;
             case 4:
                 cohete();
+                break;
             default:
                 break;
         }

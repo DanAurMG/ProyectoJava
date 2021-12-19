@@ -6,11 +6,11 @@ public class Comercial extends Avion{
         super(altitud, tripulacion, nombre, turbinas, trenAterrizaje);
         this.setPasajeros(pasajeros);
     }
+    @Override
     public String listarDatos(){
         //Uso de super
         return super.listarDatos() + "\n Cantidad de pasajeros: " + pasajeros + "\n";
     }
-
     public int getPasajeros() {
         return pasajeros;
     }
