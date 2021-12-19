@@ -203,9 +203,9 @@ public class Hangar extends JFrame implements ActionListener {
             }else if(e.getSource() == PrivadaA){
                 JOptionPane.showMessageDialog(null, "Hola siguele");
             }
+            //aqui se sigue poniendo 
         } catch (Exception ex) {
             System.err.println(ex);
-            JOptionPane.showMessageDialog(null, ex);
         }
     }
     /*------------------------------------------------ Consola -------------------------------------------------------------------------------------------*/
@@ -234,29 +234,39 @@ public class Hangar extends JFrame implements ActionListener {
     }
 
     public static void listar() {
-        int bandera = 0;
-        for (Aeronave aeronave : hangar.getLista()) {
-            System.out.println(aeronave.general());
-            bandera++;
+        try {
+            int bandera = 0;
+            for (Aeronave aeronave : hangar.getLista()) {
+                System.out.println(aeronave.general());
+                JOptionPane.showMessageDialog(null, aeronave.general());
+                bandera++;
+            }
+            if (bandera == 0){
+                System.out.println("No hay elementos registrados");
+                JOptionPane.showMessageDialog(null, "No hay elementos registrados");
+            }
+            menu();
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        if (bandera == 0){
-            System.out.println("No hay elementos registrados");
-            JOptionPane.showMessageDialog(null, "No hay elementos registrados");
-        }
-        menu();
     }
     public static void listarEsp() {
-        int bandera = 0;
-        for (Aeronave aeronave : hangar.getLista()) {
-            System.out.println(aeronave.listarDatos());
-            JOptionPane.showMessageDialog(null, aeronave.listarDatos());
-            bandera++;
+        try {
+            int bandera = 0;
+            for (Aeronave aeronave : hangar.getLista()) {
+                System.out.println(aeronave.listarDatos());
+                JOptionPane.showMessageDialog(null, aeronave.listarDatos());
+                bandera++;
+            }
+            if (bandera == 0){
+                System.out.println("No hay elementos registrados");
+                JOptionPane.showMessageDialog(null, "No hay elementos registrados");
+            }
+            menu();    
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e);
         }
-        if (bandera == 0){
-            System.out.println("No hay elementos registrados");
-            JOptionPane.showMessageDialog(null, "No hay elementos registrados");
-        }
-        menu();
+        
     }
 
     public static void menu() {
