@@ -24,7 +24,8 @@ public class Hangar extends JFrame implements ActionListener {
     private JButton Aerostato;
     private JButton Cohete;
     //Botones para cada tipo específico de aeronave
-    private JButton Militar, Comercial, Carga, Privada, Rescate, Dirigible, GloboAeros;
+    private JButton MilitarA, Comercial, Carga, PrivadaA, Rescate, Dirigible, GloboAeros;
+    private JButton MilitarH, PrivadaH;
     //Textos que llevan todas las aeronaves
     private JTextField Campo1, Campo2, Campo3, CampoA1;
     //Textos máximos que llevan los aviones
@@ -59,11 +60,13 @@ public class Hangar extends JFrame implements ActionListener {
         Aerostato = new JButton("Aerostato");
         Cohete = new JButton("Cohete");
         // Aviones
-        Militar = new JButton("Militar");
+        MilitarA = new JButton("Militar");
         Comercial = new JButton("Comercial");
         Carga = new JButton("Carga");
-        Privada = new JButton("Privada");
+        PrivadaA = new JButton("Privada");
         //Helicoptero
+        MilitarH = new JButton("Militar");
+        PrivadaH = new JButton("Privada");
         Rescate = new JButton("Rescate");
         //Aerostatos
         Dirigible = new JButton("Dirigible");
@@ -71,11 +74,13 @@ public class Hangar extends JFrame implements ActionListener {
         //Dimensiones
         Agregar.setBounds(175, 30, 150, 30);
         Avion.setBounds(175, 30, 150, 30);
-        Militar.setBounds(175, 30, 150, 30);
+        MilitarA.setBounds(175, 30, 150, 30);
+        MilitarH.setBounds(175, 30, 150, 30);
         Dirigible.setBounds(175, 30, 150, 30);
         ListGen.setBounds(175, 90, 150, 30);
         Helicoptero.setBounds(175, 90, 150, 30);
-        Privada.setBounds(175, 90, 150, 30);
+        PrivadaA.setBounds(175, 90, 150, 30);
+        PrivadaH.setBounds(175, 90, 150, 30);
         GloboAeros.setBounds(175, 90, 150, 30);
         ListTec.setBounds(175, 150, 150, 30);
         Aerostato.setBounds(175, 150, 150, 30);
@@ -97,10 +102,12 @@ public class Hangar extends JFrame implements ActionListener {
         add(Aerostato);
         add(Cohete);
         // añadimos especificas
-        add(Militar);
+        add(MilitarA);
+        add(MilitarH);
         add(Comercial);
         add(Carga);
-        add(Privada);
+        add(PrivadaA);
+        add(MilitarH);
         add(Rescate);
         add(GloboAeros);
         add(Dirigible);
@@ -117,10 +124,12 @@ public class Hangar extends JFrame implements ActionListener {
         Aerostato.addActionListener(this);
         Cohete.addActionListener(this);
         // especificos
-        Militar.addActionListener(this);
+        MilitarA.addActionListener(this);
+        MilitarH.addActionListener(this);
         Comercial.addActionListener(this);
         Carga.addActionListener(this);
-        Privada.addActionListener(this);
+        PrivadaA.addActionListener(this);
+        PrivadaH.addActionListener(this);
         Rescate.addActionListener(this);
         GloboAeros.addActionListener(this);
         Dirigible.addActionListener(this);
@@ -130,10 +139,12 @@ public class Hangar extends JFrame implements ActionListener {
         Aerostato.setVisible(false);
         Cohete.setVisible(false);
         //especificos
-        Militar.setVisible(false);
+        MilitarA.setVisible(false);
+        MilitarH.setVisible(false);
         Comercial.setVisible(false);
         Carga.setVisible(false);
-        Privada.setVisible(false);
+        PrivadaA.setVisible(false);
+        PrivadaH.setVisible(false);
         Rescate.setVisible(false);
         GloboAeros.setVisible(false);
         Dirigible.setVisible(false);
@@ -164,17 +175,17 @@ public class Hangar extends JFrame implements ActionListener {
                 Helicoptero.setVisible(false);
                 Cohete.setVisible(false);
                 Aerostato.setVisible(false);
-                Militar.setVisible(true);
+                MilitarA.setVisible(true);
                 Comercial.setVisible(true);
                 Carga.setVisible(true);
-                Privada.setVisible(true);
+                PrivadaA.setVisible(true);
             }else if(e.getSource() == Helicoptero){
                 Avion.setVisible(false);
                 Helicoptero.setVisible(false);
                 Cohete.setVisible(false);
                 Aerostato.setVisible(false);
-                Militar.setVisible(true);
-                Privada.setVisible(true);
+                MilitarH.setVisible(true);
+                PrivadaH.setVisible(true);
                 Rescate.setVisible(true);
             }else if(e.getSource() == Cohete){
                 JOptionPane.showMessageDialog(null, "Volar cual cohete");
@@ -185,8 +196,12 @@ public class Hangar extends JFrame implements ActionListener {
                 Aerostato.setVisible(false);
                 Dirigible.setVisible(true);
                 GloboAeros.setVisible(true);
-            }else if(e.getSource() == Militar){
-                
+            }else if(e.getSource() == MilitarA){
+                JOptionPane.showMessageDialog(null, "MilitarAvion");
+            }else if(e.getSource() == MilitarH){
+                JOptionPane.showMessageDialog(null, "MilitarHelicptero");
+            }else if(e.getSource() == PrivadaA){
+                JOptionPane.showMessageDialog(null, "Hola siguele");
             }
         } catch (Exception ex) {
             System.err.println(ex);
@@ -302,14 +317,7 @@ public class Hangar extends JFrame implements ActionListener {
             System.err.println(e);
         }
         
-    }/*
-    public static void agregarN(ActionEvent e){
-        System.out.println("a");
-        if(e.getSource() == Avion){
-            JOptionPane.showMessageDialog(null, "Prueba");
-        }
     }
-*/
     public static void busqueda() {
         System.out.println("1. Avion");
         System.out.println("2. Helicoptero");
