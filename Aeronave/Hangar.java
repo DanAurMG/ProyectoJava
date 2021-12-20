@@ -1011,6 +1011,10 @@ public class Hangar extends JFrame implements ActionListener {
     public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
     }
+    //Lista de tipo aeronave, clase padre pero se le guardan objetos de avión, clase hija, es downcasting
+    public void registrar(Avion avion) {
+        lista.add(avion);
+    }
 
     public List<Aeronave> getLista() {
         return lista;
@@ -1051,7 +1055,7 @@ public class Hangar extends JFrame implements ActionListener {
                 bandera++;
             }
             if (bandera == 0){
-                System.out.println("No hay elementos registrados");
+                //System.out.println("No hay elementos registrados");
                 JOptionPane.showMessageDialog(null, "No hay elementos registrados");
             }                
         } catch (IndexOutOfBoundsException e) {
