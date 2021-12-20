@@ -1012,7 +1012,7 @@ public class Hangar extends JFrame implements ActionListener {
     public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
     }
-    //Lista de tipo aeronave, clase padre pero se le guardan objetos de avión, clase hija, es downcasting
+    //Lista de tipo aeronave, clase padre pero se le guardan objetos de avión, clase hija, es upcasting
     public void registrar(Avion avion) {
         lista.add(avion);
     }
@@ -1020,6 +1020,7 @@ public class Hangar extends JFrame implements ActionListener {
     public List<Aeronave> getLista() {
         return lista;
     }
+    
     static Scanner teclas = new Scanner(System.in);
     static Hangar hangar = new Hangar();
 
@@ -1032,8 +1033,17 @@ public class Hangar extends JFrame implements ActionListener {
     //Uso de Try-catch
         try {
             int bandera = 0;
-            for (Aeronave aeronave : hangar.getLista()) {
-                //System.out.println(aeronave.general());
+            for (Aeronave aeronave : hangar.getLista()) {                
+                //downcasting
+                Avion av;
+                if(aeronave instanceof Avion){
+                    av = (Avion)aeronave;
+                    System.out.println("Se ha hecho el down-casting " + av.getTurbinas());
+                    //Downcasting
+                    if(aeronave.getClass().getSimpleName().equals("MilitarA")){
+                        System.out.println("Se ha consultado un avion militar ");
+                    }
+                }
                 JOptionPane.showMessageDialog(null, aeronave.general());
                 bandera++;
             }
