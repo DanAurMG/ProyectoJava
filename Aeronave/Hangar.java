@@ -1040,7 +1040,13 @@ public class Hangar extends JFrame implements ActionListener {
                     System.out.println("Se ha hecho el down-casting " + av.getTurbinas());
                     //Downcasting
                     if(aeronave.getClass().getSimpleName().equals("MilitarA")){
-                        System.out.println("Se ha consultado un avion militar ");
+                        JOptionPane.showMessageDialog(null, "Se consulto un avion militar");
+                    }else if(aeronave.getClass().getSimpleName().equals("PrivadaA")){
+                        JOptionPane.showMessageDialog(null, "Se consulto un avion privado ");
+                    }else if(aeronave.getClass().getSimpleName().equals("Comercial")){
+                        JOptionPane.showMessageDialog(null, "Se consulto un avion comercial ");
+                    }else if(aeronave.getClass().getSimpleName().equals("Carga")){
+                        JOptionPane.showMessageDialog(null, "Se consulto un avion de carga ");
                     }
                 }
                 JOptionPane.showMessageDialog(null, aeronave.general());
