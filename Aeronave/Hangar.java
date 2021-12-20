@@ -167,7 +167,7 @@ public class Hangar extends JFrame implements ActionListener {
         add(Agregar);
         add(ListGen);
         add(ListTec);
-        add(Otros);
+        //add(Otros);
         add(Salir);
         //Añadimos aeronaves
         add(Avion);

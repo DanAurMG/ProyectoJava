@@ -24,7 +24,7 @@ public class Aerostatos extends Aeronave{
     @Override
     public void preparar() {
         JOptionPane.showMessageDialog(null, "Llenando el deposito con: " + gas);
-        JOptionPane.showMessageDialog(null, "Terminando de añadir el aerostato");       
+        JOptionPane.showMessageDialog(null, "Terminando de anadir el aerostato");       
         
     }
     @Override
