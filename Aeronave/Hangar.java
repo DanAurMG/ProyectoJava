@@ -104,16 +104,31 @@ public class Hangar extends JFrame implements ActionListener {
         CampoH1 = new JTextField();
         CampoH2 = new JTextField();
         CampoH3 = new JTextField();
+        //Labels
+        Etiqueta1 = new JLabel("En numero, la altitud maxima");
+        Etiqueta2 = new JLabel("En numero, la tripulacion");
+        Etiqueta3 = new JLabel("Nombre de la aeronave");
+        Etiqueta4 = new JLabel("");
+        Etiqueta5 = new JLabel("");
+        Etiqueta6 = new JLabel("");
+        Etiqueta7 = new JLabel("");
         //Dimensiones
         Agregar.setBounds(175, 30, 150, 30);
         Campo1.setBounds(215,25,150,30);
+        Etiqueta1.setBounds(35,25,180,30);
         Campo2.setBounds(215,65,150,30);
+        Etiqueta2.setBounds(35,65,180,30);
         Campo3.setBounds(215,105,150,30);
+        Etiqueta3.setBounds(35,105,180,30);
         Avion.setBounds(175, 30, 150, 30);
         CampoA1.setBounds(215,145,150,30);
+        Etiqueta4.setBounds(35,145,180,30);
         CampoA2.setBounds(215,185,150,30);
+        Etiqueta5.setBounds(35,185,180,30);
         CampoA3.setBounds(215,225,150,30);
+        Etiqueta6.setBounds(35,225,180,30);
         CampoA4.setBounds(215,265,150,30);
+        Etiqueta7.setBounds(35,265,180,30);
         MilitarA.setBounds(175, 30, 150, 30);
         MilitarH.setBounds(175, 30, 150, 30);
         Dirigible.setBounds(175, 30, 150, 30);
@@ -184,7 +199,15 @@ public class Hangar extends JFrame implements ActionListener {
         add(Agregar6);
         add(Agregar7);
         add(Agregar8);
-        add(Agregar9);         
+        add(Agregar9);   
+        //Añadimos las labels 
+        add(Etiqueta1);
+        add(Etiqueta2);
+        add(Etiqueta3);
+        add(Etiqueta4);
+        add(Etiqueta5);
+        add(Etiqueta6);
+        add(Etiqueta7);
         //Pa q funcionen los botones
         // Las funciones
         Agregar.addActionListener(this);
@@ -207,6 +230,16 @@ public class Hangar extends JFrame implements ActionListener {
         Rescate.addActionListener(this);
         GloboAeros.addActionListener(this);
         Dirigible.addActionListener(this);
+        //Agregación
+        Agregar1.addActionListener(this);
+        Agregar2.addActionListener(this);
+        Agregar3.addActionListener(this);
+        Agregar4.addActionListener(this);
+        Agregar5.addActionListener(this);
+        Agregar6.addActionListener(this);
+        Agregar7.addActionListener(this);
+        Agregar8.addActionListener(this);
+        Agregar9.addActionListener(this);
         //Ocultamos los q no son funciones
         Avion.setVisible(false);
         Helicoptero.setVisible(false);
@@ -247,6 +280,14 @@ public class Hangar extends JFrame implements ActionListener {
         CampoH1.setVisible(false);
         CampoH2.setVisible(false);
         CampoH3.setVisible(false);
+        //Visibilidad de las labels
+        Etiqueta1.setVisible(false);
+        Etiqueta2.setVisible(false);
+        Etiqueta3.setVisible(false);
+        Etiqueta4.setVisible(false);
+        Etiqueta5.setVisible(false);
+        Etiqueta5.setVisible(false);
+        Etiqueta7.setVisible(false);
     }
    
     @Override
@@ -302,17 +343,69 @@ public class Hangar extends JFrame implements ActionListener {
                 Agregar1.setVisible(true);
                 Salir.setBounds(175, 355, 150, 30);
                 Campo1.setVisible(true);
+                Etiqueta1.setVisible(true);
                 Campo2.setVisible(true);
+                Etiqueta2.setVisible(true);
                 Campo3.setVisible(true);
+                Etiqueta3.setVisible(true);
                 CampoA1.setVisible(true);
+                Etiqueta4.setVisible(true);
+                Etiqueta4.setText("Modelo de turbinas");
                 CampoA2.setVisible(true);
+                Etiqueta5.setVisible(true);
+                Etiqueta5.setText("Tren de aterrizaje");
                 CampoA3.setVisible(true);
+                Etiqueta6.setVisible(true);
+                Etiqueta6.setText("Tipo de armas");
                 CampoA4.setVisible(true);
+                Etiqueta7.setVisible(true);
+                Etiqueta7.setText("Numero de brigada");
             }else if(e.getSource() == MilitarH){
                 JOptionPane.showMessageDialog(null, "MilitarHelicptero");
             }else if(e.getSource() == PrivadaA){
                 JOptionPane.showMessageDialog(null, "Hola siguele");
+            }else if(e.getSource() == Agregar1){ 
+                JOptionPane.showMessageDialog(null, "Agregado");  
+                String nombre = Campo3.getText();
+                String turbinas = CampoA1.getText();
+                String trenAterrizaje = CampoA2.getText();
+                String armas = CampoA3.getText();                
+                int altitud = Integer.parseInt(Campo1.getText());
+                int tripulacion = Integer.parseInt(Campo2.getText());
+                int brigada = Integer.parseInt(CampoA4.getText());                              
+                MilitarA mA = new MilitarA(altitud, tripulacion, nombre, turbinas, trenAterrizaje, armas, brigada);
+                hangar.registrar(mA);
+                Campo1.setVisible(false);
+                Campo2.setVisible(false);
+                Campo3.setVisible(false);
+                CampoA1.setVisible(false);
+                CampoA2.setVisible(false);
+                CampoA3.setVisible(false);
+                CampoA4.setVisible(false);
+                CampoAr1.setVisible(false);
+                CampoAr2.setVisible(false);
+                CampoAr3.setVisible(false);
+                CampoC1.setVisible(false);
+                CampoH1.setVisible(false);
+                CampoH2.setVisible(false);
+                CampoH3.setVisible(false);                
+                Etiqueta1.setVisible(false);
+                Etiqueta2.setVisible(false);
+                Etiqueta3.setVisible(false);
+                Etiqueta4.setVisible(false);
+                Etiqueta5.setVisible(false);
+                Etiqueta6.setVisible(false);
+                Etiqueta7.setVisible(false); 
+                Agregar1.setVisible(false);  
+                Agregar.setVisible(true);
+                ListGen.setVisible(true);
+                ListTec.setVisible(true);
+                Eliminar.setVisible(true);  
+                Salir.setBounds(175, 270, 150, 30);         
+
             }
+
+        
             //aqui se sigue poniendo 
         } catch (Exception ex) {
             System.err.println(ex);
@@ -355,8 +448,7 @@ public class Hangar extends JFrame implements ActionListener {
             if (bandera == 0){
                 //System.out.println("No hay elementos registrados");
                 JOptionPane.showMessageDialog(null, "No hay elementos registrados");
-            }
-            menu();
+            }            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             //System.out.println(e);
@@ -366,15 +458,14 @@ public class Hangar extends JFrame implements ActionListener {
         try {
             int bandera = 0;
             for (Aeronave aeronave : hangar.getLista()) {
-                System.out.println(aeronave.listarDatos());
+                //System.out.println(aeronave.listarDatos());
                 JOptionPane.showMessageDialog(null, aeronave.listarDatos());
                 bandera++;
             }
             if (bandera == 0){
                 System.out.println("No hay elementos registrados");
                 JOptionPane.showMessageDialog(null, "No hay elementos registrados");
-            }
-            menu();    
+            }                
         } catch (IndexOutOfBoundsException e) {
             System.out.println(e);
         }
