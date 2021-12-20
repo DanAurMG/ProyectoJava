@@ -40,5 +40,5 @@ public abstract class Aeronave implements Inteface{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public abstract void volar();
+    public abstract void preparar();
 }

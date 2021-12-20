@@ -22,22 +22,26 @@ public class Aerostatos extends Aeronave{
         Aerostatos.gas = gas;
     }
     @Override
-    public void volar() {
-        JOptionPane.showMessageDialog(null, "Vuela con: " + gas);
-        System.out.println("Vuela con: " + gas);
-    }
-    @Override
-    public void name() {
-        JOptionPane.showMessageDialog(null, "Su nombre es: " + super.getNombre());
-    }
-    @Override
-    public int llenarse() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-    @Override
-    public void cargar() {
-        // TODO Auto-generated method stub
+    public void preparar() {
+        JOptionPane.showMessageDialog(null, "Llenando el deposito con: " + gas);
+        JOptionPane.showMessageDialog(null, "Terminando de anadir el aerostato");       
         
+    }
+    @Override
+    public void preparar(int n) {
+        switch(n){
+            case 1: 
+                JOptionPane.showMessageDialog(null, "Colocando la propaganda...");
+                JOptionPane.showMessageDialog(null, "Colocando el timonel...");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Verificando la valvula...");
+                JOptionPane.showMessageDialog(null, "Contabilizando el lastre...");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "No fue pasada una variable");
+                break;
+        
+        }
     }
 }

@@ -1,5 +1,7 @@
 package Aeronave;
 
+import javax.swing.JOptionPane;
+
 public class MilitarA extends Avion{
     private String armas;
     private int brigada;

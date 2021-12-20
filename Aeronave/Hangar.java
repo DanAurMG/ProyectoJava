@@ -17,9 +17,9 @@ public class Hangar extends JFrame implements ActionListener {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     // Declaración de las etiquetas para cada caso
-    private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
+    private JButton Agregar, ListGen, ListTec, Otros, Salir;
     //Botones luego de agregar
-    private  JButton Avion;
+    private static  JButton Avion;
     private JButton Helicoptero;
     private JButton Aerostato;
     private JButton Cohete;
@@ -56,7 +56,7 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar = new JButton("Dar de alta");
         ListGen = new JButton("Listado general");
         ListTec = new JButton("Listado Tecnico");
-        Eliminar = new JButton("Eliminar");
+        Otros = new JButton("Otras funciones ");
         Salir = new JButton("Salir");
         // Aeronaves
         Avion = new JButton("Avion");
@@ -149,7 +149,7 @@ public class Hangar extends JFrame implements ActionListener {
         Aerostato.setBounds(175, 150, 150, 30);
         Carga.setBounds(175, 150, 150, 30);
         Rescate.setBounds(175, 150, 150, 30);
-        Eliminar.setBounds(175, 210, 150, 30);
+        Otros.setBounds(175, 210, 150, 30);
         Cohete.setBounds(175, 210, 150, 30);
         Comercial.setBounds(175, 210, 150, 30);
         Salir.setBounds(175, 270, 150, 30);
@@ -163,18 +163,18 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar8.setBounds(175, 310, 150, 30);
         Agregar9.setBounds(175, 310, 150, 30);
         Agregar10.setBounds(175, 310, 150, 30);
-        // añadimos funciones
+        //Añadimos funciones
         add(Agregar);
         add(ListGen);
         add(ListTec);
-        add(Eliminar);
+        //add(Otros);
         add(Salir);
-        // añadimos aeronaves
+        //Añadimos aeronaves
         add(Avion);
         add(Helicoptero);
         add(Aerostato);
         add(Cohete);
-        // añadimos especificas
+        //Añadimos especificas
         add(MilitarA);
         add(Comercial);
         add(Carga);
@@ -219,19 +219,19 @@ public class Hangar extends JFrame implements ActionListener {
         add(Etiqueta5);
         add(Etiqueta6);
         add(Etiqueta7);
-        //Pa q funcionen los botones
-        // Las funciones
+        //Listeners para los eventos
+        //Las funciones
         Agregar.addActionListener(this);
         ListGen.addActionListener(this);
         ListTec.addActionListener(this);
-        Eliminar.addActionListener(this);
+        Otros.addActionListener(this);
         Salir.addActionListener(this);
-        // Las aeronaves
+        //Las aeronaves
         Avion.addActionListener(this);
         Helicoptero.addActionListener(this);
         Aerostato.addActionListener(this);
         Cohete.addActionListener(this);
-        // especificos
+        //Tipo especificos
         MilitarA.addActionListener(this);
         MilitarH.addActionListener(this);
         Comercial.addActionListener(this);
@@ -252,12 +252,11 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar8.addActionListener(this);
         Agregar9.addActionListener(this);
         Agregar10.addActionListener(this);
-        //Ocultamos los q no son funciones
+        //Ocultamos los que no son funciones
         Avion.setVisible(false);
         Helicoptero.setVisible(false);
         Aerostato.setVisible(false);
         Cohete.setVisible(false);
-        //especificos
         MilitarA.setVisible(false);
         MilitarH.setVisible(false);
         Comercial.setVisible(false);
@@ -312,11 +311,12 @@ public class Hangar extends JFrame implements ActionListener {
                 listar();
             }else if(e.getSource() == ListTec){
                 listarEsp();
+                //((Inteface) Avion).preparar();
             }else if (e.getSource() == Agregar) {                
                 Agregar.setVisible(false);
                 ListGen.setVisible(false);
                 ListTec.setVisible(false);
-                Eliminar.setVisible(false);
+                Otros.setVisible(false);
                 Avion.setVisible(true);
                 Helicoptero.setVisible(true);
                 Cohete.setVisible(true);
@@ -481,7 +481,7 @@ public class Hangar extends JFrame implements ActionListener {
                 Etiqueta4.setText("Modelo de helices");
                 Etiqueta5.setText("Tipos de armas");
                 Etiqueta6.setText("Numero de brigada");
-            }else if(e.getSource() == PrivadaH){
+            }else if(e.getSource() == Rescate){
                 MilitarH.setVisible(false);
                 PrivadaH.setVisible(false);
                 Rescate.setVisible(false);
@@ -493,7 +493,16 @@ public class Hangar extends JFrame implements ActionListener {
                 Etiqueta2.setVisible(true);
                 Campo3.setVisible(true);
                 Etiqueta3.setVisible(true);
-            }else if(e.getSource() == Rescate){
+                CampoH1.setVisible(true);
+                CampoH2.setVisible(true);
+                CampoH3.setVisible(true);
+                Etiqueta4.setVisible(true);
+                Etiqueta5.setVisible(true);
+                Etiqueta6.setVisible(true);
+                Etiqueta4.setText("Modelo de helices");
+                Etiqueta5.setText("Numero de la clinica");
+                Etiqueta6.setText("Equipo que transporta");
+            }else if(e.getSource() == PrivadaH){
                 MilitarH.setVisible(false);
                 PrivadaH.setVisible(false);
                 Rescate.setVisible(false);
@@ -505,7 +514,16 @@ public class Hangar extends JFrame implements ActionListener {
                 Etiqueta2.setVisible(true);
                 Campo3.setVisible(true);
                 Etiqueta3.setVisible(true);
+                CampoH1.setVisible(true);
+                CampoH2.setVisible(true);
+                Etiqueta4.setVisible(true);
+                Etiqueta5.setVisible(true);
+                Etiqueta4.setText("Modelo de helices");
+                Etiqueta5.setText("Marca de la heladera");
             }else if(e.getSource() == Dirigible){
+                Dirigible.setVisible(false);
+                GloboAeros.setVisible(false);
+                Agregar8.setVisible(true);
                 Salir.setBounds(175, 355, 150, 30);
                 Campo1.setVisible(true);
                 Etiqueta1.setVisible(true);
@@ -513,7 +531,19 @@ public class Hangar extends JFrame implements ActionListener {
                 Etiqueta2.setVisible(true);
                 Campo3.setVisible(true);
                 Etiqueta3.setVisible(true);
+                CampoAr1.setVisible(true);
+                CampoAr2.setVisible(true);
+                CampoAr3.setVisible(true);
+                Etiqueta4.setVisible(true);
+                Etiqueta5.setVisible(true);
+                Etiqueta6.setVisible(true);
+                Etiqueta4.setText("Gas usado para volar");
+                Etiqueta5.setText("Marca del timonel");
+                Etiqueta6.setText("Empresa patrocinadora");
             }else if(e.getSource() == GloboAeros){
+                Dirigible.setVisible(false);
+                GloboAeros.setVisible(false);
+                Agregar9.setVisible(true);
                 Salir.setBounds(175, 355, 150, 30);
                 Campo1.setVisible(true);
                 Etiqueta1.setVisible(true);
@@ -521,245 +551,426 @@ public class Hangar extends JFrame implements ActionListener {
                 Etiqueta2.setVisible(true);
                 Campo3.setVisible(true);
                 Etiqueta3.setVisible(true);
+                CampoAr1.setVisible(true);
+                CampoAr2.setVisible(true);
+                CampoAr3.setVisible(true);
+                Etiqueta4.setVisible(true);
+                Etiqueta5.setVisible(true);
+                Etiqueta6.setVisible(true);
+                Etiqueta4.setText("Gas usado para volar");
+                Etiqueta5.setText("Marca de la valvula");
+                Etiqueta6.setText("Peso en kilos del lastre");
             }else if(e.getSource() == Agregar1){ 
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                String turbinas = CampoA1.getText();
-                String trenAterrizaje = CampoA2.getText();
-                String armas = CampoA3.getText();                
-                int brigada = Integer.parseInt(CampoA4.getText());                              
-                MilitarA mA = new MilitarA(altitud, tripulacion, nombre, turbinas, trenAterrizaje, armas, brigada);
-                hangar.registrar(mA);
-                JOptionPane.showMessageDialog(null, "Agregado");  
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoA1.setText("");
-                CampoA2.setText("");
-                CampoA3.setText("");
-                CampoA4.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoA1.setVisible(false);
-                CampoA2.setVisible(false);
-                CampoA3.setVisible(false);
-                CampoA4.setVisible(false);               
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);
-                Etiqueta7.setVisible(false); 
-                Agregar1.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String turbinas = CampoA1.getText();
+                    String trenAterrizaje = CampoA2.getText();
+                    String armas = CampoA3.getText();                
+                    int brigada = Integer.parseInt(CampoA4.getText());                              
+                    MilitarA mA = new MilitarA(altitud, tripulacion, nombre, turbinas, trenAterrizaje, armas, brigada);
+                    hangar.registrar(mA);
+                    mA.preparar();
+                    mA.preparar(1);
+                    JOptionPane.showMessageDialog(null, "Agregado");  
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoA1.setText("");
+                    CampoA2.setText("");
+                    CampoA3.setText("");
+                    CampoA4.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoA1.setVisible(false);
+                    CampoA2.setVisible(false);
+                    CampoA3.setVisible(false);
+                    CampoA4.setVisible(false);               
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Etiqueta7.setVisible(false); 
+                    Agregar1.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    CampoA4.setText("");
+                    ex.printStackTrace();                    
+                }
             }else if(e.getSource() == Agregar2){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                String turbinas = CampoA1.getText();
-                String trenAterrizaje = CampoA2.getText();
-                int pasajeros = Integer.parseInt(CampoA3.getText());                                             
-                Comercial aC = new Comercial(altitud, tripulacion, nombre, turbinas, trenAterrizaje, pasajeros);
-                hangar.registrar(aC);
-                JOptionPane.showMessageDialog(null, "Agregado");  
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoA1.setText("");
-                CampoA2.setText("");
-                CampoA3.setText("");                
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoA1.setVisible(false);
-                CampoA2.setVisible(false);
-                CampoA3.setVisible(false);
-                CampoA4.setVisible(false);                            
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);                
-                Agregar2.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String turbinas = CampoA1.getText();
+                    String trenAterrizaje = CampoA2.getText();
+                    int pasajeros = Integer.parseInt(CampoA3.getText());                                             
+                    Comercial aC = new Comercial(altitud, tripulacion, nombre, turbinas, trenAterrizaje, pasajeros);
+                    hangar.registrar(aC);
+                    aC.preparar();
+                    aC.preparar(2);
+                    JOptionPane.showMessageDialog(null, "Agregado");  
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoA1.setText("");
+                    CampoA2.setText("");
+                    CampoA3.setText("");                
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoA1.setVisible(false);
+                    CampoA2.setVisible(false);
+                    CampoA3.setVisible(false);
+                    CampoA4.setVisible(false);                            
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);                
+                    Agregar2.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    CampoA3.setText("");  
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar3){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoA1.setText("");
-                CampoA2.setText("");
-                CampoA3.setText("");
-                CampoA4.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoA1.setVisible(false);
-                CampoA2.setVisible(false);
-                CampoA3.setVisible(false);
-                CampoA4.setVisible(false);               
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);
-                Etiqueta7.setVisible(false);  
-                Agregar3.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{    
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String turbinas = CampoA1.getText();
+                    String trenAterrizaje = CampoA2.getText();
+                    String suministros = CampoA4.getText();
+                    String manifiesto = CampoA3.getText();
+                    Carga car = new Carga(altitud, tripulacion, nombre, turbinas, trenAterrizaje, suministros, manifiesto);
+                    hangar.registrar(car);
+                    car.preparar();
+                    car.preparar(3);
+                    JOptionPane.showMessageDialog(null, "Agregado");  
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoA1.setText("");
+                    CampoA2.setText("");
+                    CampoA3.setText("");
+                    CampoA4.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoA1.setVisible(false);
+                    CampoA2.setVisible(false);
+                    CampoA3.setVisible(false);
+                    CampoA4.setVisible(false);               
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Etiqueta7.setVisible(false);  
+                    Agregar3.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar4){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoA1.setText("");
-                CampoA2.setText("");
-                CampoA3.setText("");
-                CampoA4.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoA1.setVisible(false);
-                CampoA2.setVisible(false);
-                CampoA3.setVisible(false);
-                CampoA4.setVisible(false);               
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);
-                Etiqueta7.setVisible(false); 
-                Agregar4.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{                
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String turbinas = CampoA1.getText();
+                    String trenAterrizaje = CampoA2.getText();
+                    String dueno = CampoA3.getText();
+                    String entretenimiento = CampoA4.getText();
+                    Privado priv = new Privado(altitud, tripulacion, nombre, turbinas, trenAterrizaje, dueno, entretenimiento);
+                    hangar.registrar(priv);
+                    priv.preparar();
+                    priv.preparar(4);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoA1.setText("");
+                    CampoA2.setText("");
+                    CampoA3.setText("");
+                    CampoA4.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoA1.setVisible(false);
+                    CampoA2.setVisible(false);
+                    CampoA3.setVisible(false);
+                    CampoA4.setVisible(false);               
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Etiqueta7.setVisible(false); 
+                    Agregar4.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar5){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoH1.setText("");
-                CampoH2.setText("");
-                CampoH3.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoH1.setVisible(false);
-                CampoH2.setVisible(false);
-                CampoH3.setVisible(false);
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);
-                Agregar5.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{   
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String helices = CampoH1.getText();
+                    String armas = CampoH2.getText();                
+                    int brigada = Integer.parseInt(CampoH3.getText());                   
+                    MilitarH milih = new MilitarH(altitud, tripulacion, nombre, helices, armas, brigada);
+                    hangar.registrar(milih);
+                    milih.preparar();
+                    milih.preparar(1);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoH1.setText("");
+                    CampoH2.setText("");
+                    CampoH3.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoH1.setVisible(false);
+                    CampoH2.setVisible(false);
+                    CampoH3.setVisible(false);
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Agregar5.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    CampoH3.setText("");
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar6){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoH1.setText("");
-                CampoH2.setText("");
-                CampoH3.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoH1.setVisible(false);
-                CampoH2.setVisible(false);
-                CampoH3.setVisible(false);
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);
-                Etiqueta6.setVisible(false);
-                Agregar6.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{ 
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String helices = CampoH1.getText();
+                    int hospital = Integer.parseInt(CampoH2.getText());                   
+                    String equipo = CampoH3.getText();                
+                    Rescate resc = new Rescate(altitud, tripulacion, nombre, helices, hospital, equipo);
+                    hangar.registrar(resc);
+                    resc.preparar();
+                    resc.preparar(2);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoH1.setText("");
+                    CampoH2.setText("");
+                    CampoH3.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoH1.setVisible(false);
+                    CampoH2.setVisible(false);
+                    CampoH3.setVisible(false);
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Agregar6.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    CampoH2.setText("");
+                    ex.printStackTrace();
+                }   
             }else if(e.getSource() == Agregar7){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                CampoH1.setText("");
-                CampoH2.setText("");                
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                CampoH1.setVisible(false);
-                CampoH2.setVisible(false);
-                Etiqueta1.setVisible(false);
-                Etiqueta2.setVisible(false);
-                Etiqueta3.setVisible(false);
-                Etiqueta4.setVisible(false);
-                Etiqueta5.setVisible(false);                
-                Agregar7.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try {   
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String helices = CampoH1.getText();
+                    String heladeras = CampoH2.getText();
+                    PrivadoH privH = new PrivadoH(altitud, tripulacion, nombre, helices, heladeras);
+                    hangar.registrar(privH);
+                    privH.preparar();
+                    privH.preparar(3);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoH1.setText("");
+                    CampoH2.setText("");                
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoH1.setVisible(false);
+                    CampoH2.setVisible(false);
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);                
+                    Agregar7.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");                    
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar8){
-                int altitud = Integer.parseInt(Campo1.getText());
-                int tripulacion = Integer.parseInt(Campo2.getText());
-                String nombre = Campo3.getText();
-                Campo1.setText("");
-                Campo2.setText("");
-                Campo3.setText("");
-                Campo1.setVisible(false);
-                Campo2.setVisible(false);
-                Campo3.setVisible(false);
-                Agregar8.setVisible(false);  
-                Agregar.setVisible(true);
-                ListGen.setVisible(true);
-                ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);
+                try{
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String gas = CampoAr1.getText();
+                    String timonel = CampoAr2.getText();
+                    String empresa = CampoAr3.getText();
+                    Dirigible dirig = new Dirigible(altitud, tripulacion, nombre, gas, timonel, empresa);
+                    hangar.registrar(dirig);
+                    dirig.preparar();
+                    dirig.preparar(1);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoAr1.setText("");
+                    CampoAr2.setText("");
+                    CampoAr3.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoAr1.setVisible(false);
+                    CampoAr2.setVisible(false);
+                    CampoAr3.setVisible(false);
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Agregar8.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    ex.printStackTrace();
+                }
+            }else if(e.getSource() == Agregar9){
+                try{
+                    int altitud = Integer.parseInt(Campo1.getText());
+                    int tripulacion = Integer.parseInt(Campo2.getText());
+                    String nombre = Campo3.getText();
+                    String gas = CampoAr1.getText();
+                    String valvula = CampoAr2.getText();
+                    int lastre = Integer.parseInt(CampoAr3.getText());
+                    GloboAeros globo = new GloboAeros(altitud, tripulacion, nombre, gas, valvula, lastre);
+                    hangar.registrar(globo);
+                    globo.preparar();
+                    globo.preparar(2);
+                    JOptionPane.showMessageDialog(null, "Agregado"); 
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    Campo3.setText("");
+                    CampoAr1.setText("");
+                    CampoAr2.setText("");
+                    CampoAr3.setText("");
+                    Campo1.setVisible(false);
+                    Campo2.setVisible(false);
+                    Campo3.setVisible(false);
+                    CampoAr1.setVisible(false);
+                    CampoAr2.setVisible(false);
+                    CampoAr3.setVisible(false);
+                    Etiqueta1.setVisible(false);
+                    Etiqueta2.setVisible(false);
+                    Etiqueta3.setVisible(false);
+                    Etiqueta4.setVisible(false);
+                    Etiqueta5.setVisible(false);
+                    Etiqueta6.setVisible(false);
+                    Agregar9.setVisible(false);  
+                    Agregar.setVisible(true);
+                    ListGen.setVisible(true);
+                    ListTec.setVisible(true);
+                    Otros.setVisible(true);  
+                    Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    CampoAr3.setText("");
+                    ex.printStackTrace();
+                }
             }else if(e.getSource() == Agregar10){
+                try{
                 int altitud = Integer.parseInt(Campo1.getText());
                 int tripulacion = Integer.parseInt(Campo2.getText());
                 String nombre = Campo3.getText();
                 String propulsor = CampoC1.getText();
                 Cohete ch = new Cohete(altitud, tripulacion, nombre, propulsor);
                 hangar.registrar(ch);
+                ch.preparar();
+                ch.preparar(1);
                 JOptionPane.showMessageDialog(null, "Agregado"); 
                 Campo1.setText("");
                 Campo2.setText("");
@@ -777,8 +988,14 @@ public class Hangar extends JFrame implements ActionListener {
                 Agregar.setVisible(true);
                 ListGen.setVisible(true);
                 ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
+                Otros.setVisible(true);  
                 Salir.setBounds(175, 270, 150, 30);
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
+                    Campo1.setText("");
+                    Campo2.setText("");
+                    ex.printStackTrace();
+                }
             }
 
         
@@ -787,7 +1004,7 @@ public class Hangar extends JFrame implements ActionListener {
             System.err.println(ex);
         }
     }
-    /*------------------------------------------------ Consola -------------------------------------------------------------------------------------------*/
+    /*------------------------------------------------ Funciones -------------------------------------------------------------------------------------------*/
     public static void LimpiarConsola() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -805,11 +1022,6 @@ public class Hangar extends JFrame implements ActionListener {
     public static void salir() {
         System.out.println("\n Programa finalizado");
         System.exit(0);
-    }
-
-    public static void error() {
-        System.out.println("\n Opcion Incorrecta");
-        menu();
     }
 
     public static void listar() {
@@ -830,12 +1042,13 @@ public class Hangar extends JFrame implements ActionListener {
             //System.out.println(e);
         }
     }
+    
     public static void listarEsp() {
         try {
             int bandera = 0;
-            for (Aeronave aeronave : hangar.getLista()) {
+            for (Aeronave aeronave : hangar.getLista()) {                
                 //System.out.println(aeronave.listarDatos());
-                JOptionPane.showMessageDialog(null, aeronave.listarDatos());
+                JOptionPane.showMessageDialog(null, aeronave.listarDatos());                                
                 bandera++;
             }
             if (bandera == 0){
@@ -846,404 +1059,5 @@ public class Hangar extends JFrame implements ActionListener {
             System.out.println(e);
         }
         
-    }
-
-    public static void menu() {
-        System.out.println("1. Agregar");
-        System.out.println("2. Listado general");
-        System.out.println("3. Listado tecnico");
-        System.out.println("4. Eliminar");
-        System.out.println("5. Salir");
-        System.out.println("Elija la opcion: ");
-        int op = teclas.nextInt();
-        LimpiarConsola();
-        switch (op) {
-            case 1:
-                agregar();
-                break;
-            case 2:
-                listar();
-                break;
-            case 3:
-                listarEsp();
-                break;
-            case 4:
-                eliminar();
-                break;
-            case 5:
-                salir();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public static void agregar() {
-        try {
-            System.out.println("1. Avion");
-            System.out.println("2. Helicoptero");
-            System.out.println("3. Aerostatos");
-            System.out.println("4. Cohete");
-            int opc = teclas.nextInt();
-            LimpiarConsola();
-            switch (opc) {
-                case 1:
-                    avion();
-                    break;
-                case 2:
-                    heli();
-                    break;
-                case 3:
-                    aero();
-                    break;
-                case 4:
-                    cohete();
-                    break;
-                default:
-                    break;
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        
-    }
-    public static void busqueda() {
-        System.out.println("1. Avion");
-        System.out.println("2. Helicoptero");
-        System.out.println("3. Cohete");
-        System.out.println("4. Aerostatos");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                avion();
-                break;
-            case 2:
-                heli();
-                break;
-            case 3:
-                aero();
-            case 4:
-                cohete();
-            default:
-                break;
-        }
-    }
-
-    public static void eliminar() {
-        System.out.println("1. Avion");
-        System.out.println("2. Helicoptero");
-        System.out.println("3. Cohete");
-        System.out.println("4. Aerostatos");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                avion();
-                break;
-            case 2:
-                heli();
-                break;
-            case 3:
-                aero();
-            case 4:
-                cohete();
-            default:
-                break;
-        }
-    }
-
-    public static void avion() {
-        System.out.println("1. Militar");
-        System.out.println("2. Comercial");
-        System.out.println("3. Carga");
-        System.out.println("4. Privada");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                miliA();
-                break;
-            case 2:
-                comer();
-                break;
-            case 3:
-                carga();
-                break;
-            case 4:
-                priv();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public static void heli() {
-        System.out.println("1. Militar");
-        System.out.println("2. Rescate");
-        System.out.println("3. Privado");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                miliH();
-                break;
-            case 2:
-                resc();
-                break;
-            case 3:
-                privH();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public static void aero() {
-        System.out.println("1. Dirigible");
-        System.out.println("2. Globo Aeorstatico");
-        int opc = teclas.nextInt();
-        LimpiarConsola();
-        switch (opc) {
-            case 1:
-                dirig();
-                break;
-            case 2:
-                globo();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public static void cohete() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el propulsor del cohete: ");
-        String propulsor = teclas.next();
-        Cohete ch = new Cohete(altitud, tripulantes, nombre, propulsor);
-        hangar.registrar(ch);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void miliA() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese tipo turbinas: ");
-        String turbinas = teclas.next();
-        System.out.println("Ingrese modelo de tren de aterrizaje: ");
-        String trenAterrizaje = teclas.next();
-        System.out.println("Ingrese tipo de armas: ");
-        String armas = teclas.next();
-        System.out.println("Ingrese numero de brigada: ");
-        int brigada = teclas.nextInt();
-        MilitarA mA = new MilitarA(altitud, tripulantes, nombre, turbinas, trenAterrizaje, armas, brigada);
-        hangar.registrar(mA);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void comer() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese tipo turbinas: ");
-        String turbinas = teclas.next();
-        System.out.println("Ingrese modelo de tren de aterrizaje: ");
-        String trenAterrizaje = teclas.next();
-        System.out.println("Ingrese la capacidad de pasajeros: ");
-        int pasajeros = teclas.nextInt();
-        Comercial com = new Comercial(altitud, tripulantes, nombre, turbinas, trenAterrizaje, pasajeros);
-        hangar.registrar(com);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void carga() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese tipo turbinas: ");
-        String turbinas = teclas.next();
-        System.out.println("Ingrese modelo de tren de aterrizaje: ");
-        String trenAterrizaje = teclas.next();
-        System.out.println("Ingrese el estatus del manifiesto: ");
-        String manifiesto = teclas.next();
-        System.out.println("Ingrese los principales suministros que transporta");
-        String suministros = teclas.next();
-        Carga car = new Carga(altitud, tripulantes, nombre, turbinas, trenAterrizaje, suministros, manifiesto);
-        hangar.registrar(car);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void priv() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese tipo turbinas: ");
-        String turbinas = teclas.next();
-        System.out.println("Ingrese modelo de tren de aterrizaje: ");
-        String trenAterrizaje = teclas.next();
-        System.out.println("Introduzca el nombre del dueno: ");
-        String dueno = teclas.next();
-        System.out.println("Introduzca el principal entretenimiento(tele, juegos, chef, etc.): ");
-        String entretenimiento = teclas.next();
-        Privado priv = new Privado(altitud, tripulantes, nombre, turbinas, trenAterrizaje, dueno, entretenimiento);
-        hangar.registrar(priv);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void miliH() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el modelo de las helices: ");
-        String helices = teclas.next();
-        System.out.println("Introduzca el arma principal usada a bordo: ");
-        String armas = teclas.next();
-        System.out.println("Introduzca el numero de brigada a la que pertenece: ");
-        int brigada = teclas.nextInt();
-        MilitarH milih = new MilitarH(altitud, tripulantes, nombre, helices, armas, brigada);
-        hangar.registrar(milih);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void resc() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el modelo de las helices: ");
-        String helices = teclas.next();
-        System.out.println("Ingrese el numero de clínica a la que pertenece el helicoptero: ");
-        int hospital = teclas.nextInt();
-        System.out.println("Ingrese el nombre del equipo(resucitacion, hipotermia, catastrofe, etc.): ");
-        String equipo = teclas.next();
-        Rescate resc = new Rescate(altitud, tripulantes, nombre, helices, hospital, equipo);
-        hangar.registrar(resc);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void privH() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el modelo de las helices: ");
-        String helices = teclas.next();
-        System.out.println("Ingrese el tipo de heladeras del helicoptero: ");
-        String heladeras = teclas.next();
-        PrivadoH privH = new PrivadoH(altitud, tripulantes, nombre, helices, heladeras);
-        hangar.registrar(privH);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void dirig() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el gas empleado: ");
-        String gas = teclas.next();
-        System.out.println("Ingrese el estado del timonel(original, por cambiar, etc.): ");
-        String timonel = teclas.next();
-        System.out.println("Introduzca la empresa que se promociona");
-        String empresa = teclas.next();
-        Dirigible dirig = new Dirigible(altitud, tripulantes, nombre, gas, timonel, empresa);
-        hangar.registrar(dirig);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
-    public static void globo() {
-        System.out.println("\n SELECCIONE \n");
-        System.out.println("Ingrese altitud maxima en un numero: ");
-        int altitud = teclas.nextInt();
-        System.out.println("Ingrese numero de tripulantes: ");
-        int tripulantes = teclas.nextInt();
-        System.out.println("Ingrese nombre de la aeronave: ");
-        String nombre = teclas.next();
-        System.out.println("Ingrese el gas empleado: ");
-        String gas = teclas.next();
-        System.out.println("Ingrese el material de la valvula(grafeno, cobre, hierro): ");
-        String valvula = teclas.next();
-        System.out.println("Ingrese el peso en kilos total del lastre: ");
-        String lastre = teclas.next();
-        GloboAeros globo = new GloboAeros(altitud, tripulantes, nombre, gas, valvula, lastre);
-        hangar.registrar(globo);
-        System.out.println("--------------------------");
-        System.out.println("-----REGISTRO GUARDADO----");
-        System.out.println("--------------------------");
-        LimpiarConsola();
-        menu();
-    }
-
+    }   
 }
