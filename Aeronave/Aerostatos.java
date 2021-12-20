@@ -28,8 +28,7 @@ public class Aerostatos extends Aeronave{
     }
     @Override
     public void name() {
-        // TODO Auto-generated method stub
-        
+        JOptionPane.showMessageDialog(null, "Su nombre es: " + super.getNombre());
     }
     @Override
     public int llenarse() {
