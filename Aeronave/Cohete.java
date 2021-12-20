@@ -16,4 +16,24 @@ public class Cohete extends Aeronave{
     public void setPropulsor(String propulsor) {
         this.propulsor = propulsor;
     }
+    @Override
+    public void volar() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void name() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public int llenarse() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    @Override
+    public void cargar() {
+        // TODO Auto-generated method stub
+        
+    }
 }

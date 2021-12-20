@@ -43,4 +43,24 @@ public class Avion extends Aeronave{
     public void setTrenAterrizaje(String trenAterrizaje) {
         this.trenAterrizaje = trenAterrizaje;
     }
+    @Override
+    public void volar() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void name() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public int llenarse() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    @Override
+    public void cargar() {
+        // TODO Auto-generated method stub
+        
+    }
 }

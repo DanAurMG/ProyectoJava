@@ -1,11 +1,10 @@
 package Aeronave;
 
-public class Aeronave{
+public abstract class Aeronave implements Inteface{
     //Uso de encapsulamiento
     private int altitud;
     private int tripulacion;
     private String nombre; 
-
     //Constructor Aeronave
     public Aeronave(int altitud, int tripulacion, String nombre){
         this.setAltitud(altitud);
@@ -41,4 +40,5 @@ public class Aeronave{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public abstract void volar();
 }

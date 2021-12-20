@@ -1,5 +1,7 @@
 package Aeronave;
 
+import javax.swing.JOptionPane;
+
 public class Aerostatos extends Aeronave{
     private static String gas;
     //Constructor Aerostatos
@@ -18,5 +20,25 @@ public class Aerostatos extends Aeronave{
     }
     public static void setGas(String gas) {
         Aerostatos.gas = gas;
+    }
+    @Override
+    public void volar() {
+        JOptionPane.showMessageDialog(null, "Vuela con: " + gas);
+        System.out.println("Vuela con: " + gas);
+    }
+    @Override
+    public void name() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public int llenarse() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    @Override
+    public void cargar() {
+        // TODO Auto-generated method stub
+        
     }
 }

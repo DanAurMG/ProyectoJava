@@ -16,4 +16,24 @@ public class Helicoptero extends Aeronave{
     public void setHelices(String helices) {
         this.helices = helices;
     }
+    @Override
+    public void volar() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void name() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public int llenarse() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    @Override
+    public void cargar() {
+        // TODO Auto-generated method stub
+        
+    }
 }
