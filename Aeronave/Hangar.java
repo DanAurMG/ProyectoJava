@@ -997,9 +997,6 @@ public class Hangar extends JFrame implements ActionListener {
                     ex.printStackTrace();
                 }
             }
-
-        
-            //aqui se sigue poniendo 
         } catch (Exception ex) {
             System.err.println(ex);
         }
@@ -1009,7 +1006,7 @@ public class Hangar extends JFrame implements ActionListener {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-    
+
     public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
     }
@@ -1041,7 +1038,7 @@ public class Hangar extends JFrame implements ActionListener {
                 Avion av;
                 if(aeronave instanceof Avion){
                     av = (Avion)aeronave;
-                    System.out.println("Se ha hecho el down-casting " + av.getTurbinas());
+                    System.out.println("Se ha hecho el down-casting y las turbinas son:  " + av.getTurbinas());
                     //Downcasting
                     if(aeronave.getClass().getSimpleName().equals("MilitarA")){
                         JOptionPane.showMessageDialog(null, "Se consulto un avion militar");
