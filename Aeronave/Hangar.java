@@ -26,16 +26,20 @@ public class Hangar extends JFrame implements ActionListener {
     //Botones para cada tipo específico de aeronave
     private JButton MilitarA, Comercial, Carga, PrivadaA, Rescate, Dirigible, GloboAeros;
     private JButton MilitarH, PrivadaH;
+    //Botones para agregar
+    private JButton Agregar1,Agregar2, Agregar3, Agregar4, Agregar5, Agregar6, Agregar7, Agregar8, Agregar9;
     //Textos que llevan todas las aeronaves
-    private JTextField Campo1, Campo2, Campo3, CampoA1;
+    private JTextField Campo1, Campo2, Campo3;
     //Textos máximos que llevan los aviones
-    private JTextField CampoA2, CampoA3, CampoA4;
+    private JTextField CampoA1, CampoA2, CampoA3, CampoA4;
     //Textos máximos que llevan los helicópteros
     private JTextField CampoH1, CampoH2, CampoH3;
     //Texto adicional del cohete
     private JTextField CampoC1;
     //Textos máximos que llevan los aerostatos
-    private JTextField CampoAr1, CampoAr2, CamporAr3;
+    private JTextField CampoAr1, CampoAr2, CampoAr3;
+    //Labels
+    private JLabel Etiqueta1, Etiqueta2, Etiqueta3, Etiqueta4, Etiqueta5, Etiqueta6, Etiqueta7;
     // Uso de objetos de clases agregadas
     private List<Aeronave> lista;
 
@@ -43,7 +47,7 @@ public class Hangar extends JFrame implements ActionListener {
         lista = new ArrayList<>();
         ventanaMenu();
     }
-    @SuppressWarnings("Nya")
+    @SuppressWarnings("Proyecto")
     private void ventanaMenu(){
         setTitle("Practica 2 - Munoz Gonzalez, Hernandez Vergara ");
         setLayout(null);
@@ -71,9 +75,45 @@ public class Hangar extends JFrame implements ActionListener {
         //Aerostatos
         Dirigible = new JButton("Dirigible");
         GloboAeros = new JButton("GloboAeros");
+        //Botones de agregación
+        Agregar1 = new JButton("Agregar");
+        Agregar2 = new JButton("Agregar");
+        Agregar3 = new JButton("Agregar");
+        Agregar4 = new JButton("Agregar");
+        Agregar5 = new JButton("Agregar");
+        Agregar6 = new JButton("Agregar");
+        Agregar7 = new JButton("Agregar");
+        Agregar8 = new JButton("Agregar");
+        Agregar9 = new JButton("Agregar");
+        //Declaración de campos base
+        Campo1 = new JTextField();
+        Campo2 = new JTextField();
+        Campo3 = new JTextField();
+        //Campos solo de avion
+        CampoA1 = new JTextField();
+        CampoA2 = new JTextField();
+        CampoA3 = new JTextField();
+        CampoA4 = new JTextField();
+        //Campos solo de erostatos
+        CampoAr1 = new JTextField();
+        CampoAr2 = new JTextField();
+        CampoAr3 = new JTextField();
+        //Campo de Cohete
+        CampoC1 = new JTextField();
+        //Campos de helicoptero
+        CampoH1 = new JTextField();
+        CampoH2 = new JTextField();
+        CampoH3 = new JTextField();
         //Dimensiones
         Agregar.setBounds(175, 30, 150, 30);
+        Campo1.setBounds(215,25,150,30);
+        Campo2.setBounds(215,65,150,30);
+        Campo3.setBounds(215,105,150,30);
         Avion.setBounds(175, 30, 150, 30);
+        CampoA1.setBounds(215,145,150,30);
+        CampoA2.setBounds(215,185,150,30);
+        CampoA3.setBounds(215,225,150,30);
+        CampoA4.setBounds(215,265,150,30);
         MilitarA.setBounds(175, 30, 150, 30);
         MilitarH.setBounds(175, 30, 150, 30);
         Dirigible.setBounds(175, 30, 150, 30);
@@ -90,6 +130,15 @@ public class Hangar extends JFrame implements ActionListener {
         Cohete.setBounds(175, 210, 150, 30);
         Comercial.setBounds(175, 210, 150, 30);
         Salir.setBounds(175, 270, 150, 30);
+        Agregar1.setBounds(175, 310, 150, 30);
+        Agregar2.setBounds(175, 310, 150, 30);
+        Agregar3.setBounds(175, 310, 150, 30);
+        Agregar4.setBounds(175, 310, 150, 30);
+        Agregar5.setBounds(175, 310, 150, 30);
+        Agregar6.setBounds(175, 310, 150, 30);
+        Agregar7.setBounds(175, 310, 150, 30);
+        Agregar8.setBounds(175, 310, 150, 30);
+        Agregar9.setBounds(175, 310, 150, 30);
         // añadimos funciones
         add(Agregar);
         add(ListGen);
@@ -111,6 +160,31 @@ public class Hangar extends JFrame implements ActionListener {
         add(Rescate);
         add(GloboAeros);
         add(Dirigible);
+        //Añadimos los campos
+        add(Campo1);
+        add(Campo2);
+        add(Campo3);
+        add(CampoA1);
+        add(CampoA2);
+        add(CampoA3);
+        add(CampoA4);
+        add(CampoAr1);
+        add(CampoAr2);
+        add(CampoAr3);
+        add(CampoC1);
+        add(CampoH1);
+        add(CampoH2);
+        add(CampoH3);
+        //Añadimos los botones de agregar
+        add(Agregar1);
+        add(Agregar2);
+        add(Agregar3);
+        add(Agregar4);
+        add(Agregar5);
+        add(Agregar6);
+        add(Agregar7);
+        add(Agregar8);
+        add(Agregar9);         
         //Pa q funcionen los botones
         // Las funciones
         Agregar.addActionListener(this);
@@ -148,6 +222,31 @@ public class Hangar extends JFrame implements ActionListener {
         Rescate.setVisible(false);
         GloboAeros.setVisible(false);
         Dirigible.setVisible(false);
+        //Botones de agregar
+        Agregar1.setVisible(false);
+        Agregar2.setVisible(false);
+        Agregar3.setVisible(false);
+        Agregar4.setVisible(false);
+        Agregar5.setVisible(false);
+        Agregar6.setVisible(false);
+        Agregar7.setVisible(false);
+        Agregar8.setVisible(false);
+        Agregar9.setVisible(false);
+        //Visibilidad de los campos
+        Campo1.setVisible(false);
+        Campo2.setVisible(false);
+        Campo3.setVisible(false);
+        CampoA1.setVisible(false);
+        CampoA2.setVisible(false);
+        CampoA3.setVisible(false);
+        CampoA4.setVisible(false);
+        CampoAr1.setVisible(false);
+        CampoAr2.setVisible(false);
+        CampoAr3.setVisible(false);
+        CampoC1.setVisible(false);
+        CampoH1.setVisible(false);
+        CampoH2.setVisible(false);
+        CampoH3.setVisible(false);
     }
    
     @Override
@@ -159,8 +258,7 @@ public class Hangar extends JFrame implements ActionListener {
                 listar();
             }else if(e.getSource() == ListTec){
                 listarEsp();
-            }else if (e.getSource() == Agregar) {
-                JOptionPane.showMessageDialog(null, "Esta intentando agregar");
+            }else if (e.getSource() == Agregar) {                
                 Agregar.setVisible(false);
                 ListGen.setVisible(false);
                 ListTec.setVisible(false);
@@ -196,8 +294,20 @@ public class Hangar extends JFrame implements ActionListener {
                 Aerostato.setVisible(false);
                 Dirigible.setVisible(true);
                 GloboAeros.setVisible(true);
-            }else if(e.getSource() == MilitarA){
-                JOptionPane.showMessageDialog(null, "MilitarAvion");
+            }else if(e.getSource() == MilitarA){                
+                MilitarA.setVisible(false);
+                PrivadaA.setVisible(false);
+                Carga.setVisible(false);
+                Comercial.setVisible(false);
+                Agregar1.setVisible(true);
+                Salir.setBounds(175, 355, 150, 30);
+                Campo1.setVisible(true);
+                Campo2.setVisible(true);
+                Campo3.setVisible(true);
+                CampoA1.setVisible(true);
+                CampoA2.setVisible(true);
+                CampoA3.setVisible(true);
+                CampoA4.setVisible(true);
             }else if(e.getSource() == MilitarH){
                 JOptionPane.showMessageDialog(null, "MilitarHelicptero");
             }else if(e.getSource() == PrivadaA){
@@ -234,20 +344,22 @@ public class Hangar extends JFrame implements ActionListener {
     }
 
     public static void listar() {
+    //Uso de Try-catch
         try {
             int bandera = 0;
             for (Aeronave aeronave : hangar.getLista()) {
-                System.out.println(aeronave.general());
+                //System.out.println(aeronave.general());
                 JOptionPane.showMessageDialog(null, aeronave.general());
                 bandera++;
             }
             if (bandera == 0){
-                System.out.println("No hay elementos registrados");
+                //System.out.println("No hay elementos registrados");
                 JOptionPane.showMessageDialog(null, "No hay elementos registrados");
             }
             menu();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
+            //System.out.println(e);
         }
     }
     public static void listarEsp() {

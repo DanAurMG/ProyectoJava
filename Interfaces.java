@@ -13,7 +13,7 @@ public class Interfaces extends JFrame implements ActionListener{
         etiqueta.setBounds(20,20,100,100);
         add(etiqueta);
         
-        campotext = new JTextField();
+        campotext = new JTextField("Suputu");
         campotext.setBounds(100,100,60,60);
         add(campotext);
         
