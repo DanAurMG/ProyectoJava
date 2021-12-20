@@ -171,6 +171,7 @@ public class Hangar extends JFrame implements ActionListener {
         add(Comercial);
         add(Carga);
         add(PrivadaA);
+        add(PrivadaH);
         add(MilitarH);
         add(Rescate);
         add(GloboAeros);
@@ -401,8 +402,7 @@ public class Hangar extends JFrame implements ActionListener {
                 ListGen.setVisible(true);
                 ListTec.setVisible(true);
                 Eliminar.setVisible(true);  
-                Salir.setBounds(175, 270, 150, 30);         
-
+                Salir.setBounds(175, 270, 150, 30);
             }
 
         
