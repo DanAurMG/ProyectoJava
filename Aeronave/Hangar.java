@@ -1009,17 +1009,20 @@ public class Hangar extends JFrame implements ActionListener {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+    
     public void registrar(Aeronave aeronave) {
         lista.add(aeronave);
-    }
-    //Lista de tipo aeronave, clase padre pero se le guardan objetos de avión, clase hija, es upcasting
-    public void registrar(Avion avion) {
-        lista.add(avion);
     }
 
     public List<Aeronave> getLista() {
         return lista;
     }
+
+    //Lista de tipo aeronave, clase padre pero se le guardan objetos de avión, clase hija, es upcasting
+    public void registrar(Avion avion) {
+        lista.add(avion);
+    }
+
     
     static Scanner teclas = new Scanner(System.in);
     static Hangar hangar = new Hangar();
