@@ -2,3 +2,4 @@
 -Java swing (eventos)
 -uso de la palabra interface ()
 -polimorfismo() 
+-DOWNCASTING Y UPCASTING
