@@ -362,6 +362,7 @@ public class Hangar extends JFrame implements ActionListener {
                 Aerostato.setVisible(false);
                 Dirigible.setVisible(true);
                 GloboAeros.setVisible(true);
+                
             }else if(e.getSource() == MilitarA){                
                 MilitarA.setVisible(false);
                 PrivadaA.setVisible(false);
