@@ -1,5 +1,7 @@
 package Aeronave;
 
+import javax.swing.JOptionPane;
+
 public class Avion extends Aeronave{
     private String turbinas;
     private String trenAterrizaje;
@@ -44,23 +46,31 @@ public class Avion extends Aeronave{
         this.trenAterrizaje = trenAterrizaje;
     }
     @Override
-    public void volar() {
-        // TODO Auto-generated method stub
-        
+    public void preparar() {
+        JOptionPane.showMessageDialog(null, "El avion comenzara a ser preparado:");
     }
     @Override
-    public void name() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public int llenarse() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-    @Override
-    public void cargar() {
-        // TODO Auto-generated method stub
-        
+    public void preparar(int n) {    
+        switch(n){
+            case 1: 
+                JOptionPane.showMessageDialog(null, "Cargando armas...");
+                JOptionPane.showMessageDialog(null, "Asignando soldados...");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Contando asientos...");
+                JOptionPane.showMessageDialog(null, "Creando boletos...");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Llenando el manifiesto...");
+                JOptionPane.showMessageDialog(null, "Cargando el avion...");
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Comprobando la propiedad del avion...");
+                JOptionPane.showMessageDialog(null, "Cargando el entretenimiento...");
+                break;
+            default :
+                JOptionPane.showMessageDialog(null, "No fue pasada una variable");
+                break;
+        }
     }
 }

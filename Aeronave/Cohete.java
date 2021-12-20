@@ -1,5 +1,7 @@
 package Aeronave;
 
+import javax.swing.JOptionPane;
+
 public class Cohete extends Aeronave{
     private String propulsor;
     public Cohete(int altitud, int tripulacion, String nombre, String propulsor){
@@ -17,23 +19,20 @@ public class Cohete extends Aeronave{
         this.propulsor = propulsor;
     }
     @Override
-    public void volar() {
-        // TODO Auto-generated method stub
-        
+    public void preparar() {
+        JOptionPane.showMessageDialog(null, "Preparando al cohete para su almacenamiento...");        
     }
     @Override
-    public void name() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public int llenarse() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-    @Override
-    public void cargar() {
-        // TODO Auto-generated method stub
-        
-    }
+    public void preparar(int n) {
+        switch(n){
+            case 1: 
+                JOptionPane.showMessageDialog(null, "Verificando el estado del propulsor...");
+                JOptionPane.showMessageDialog(null, "Analizando el estatus del cohete...");
+                break;
+           
+            default :
+                JOptionPane.showMessageDialog(null, "No fue pasada una variable");
+                break;
+        }
+    }        
 }

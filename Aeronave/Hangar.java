@@ -17,9 +17,9 @@ public class Hangar extends JFrame implements ActionListener {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     // Declaración de las etiquetas para cada caso
-    private JButton Agregar, ListGen, ListTec, Eliminar, Salir;
+    private JButton Agregar, ListGen, ListTec, Otros, Salir;
     //Botones luego de agregar
-    private  JButton Avion;
+    private static  JButton Avion;
     private JButton Helicoptero;
     private JButton Aerostato;
     private JButton Cohete;
@@ -56,7 +56,7 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar = new JButton("Dar de alta");
         ListGen = new JButton("Listado general");
         ListTec = new JButton("Listado Tecnico");
-        Eliminar = new JButton("Eliminar");
+        Otros = new JButton("Otras funciones ");
         Salir = new JButton("Salir");
         // Aeronaves
         Avion = new JButton("Avion");
@@ -149,7 +149,7 @@ public class Hangar extends JFrame implements ActionListener {
         Aerostato.setBounds(175, 150, 150, 30);
         Carga.setBounds(175, 150, 150, 30);
         Rescate.setBounds(175, 150, 150, 30);
-        Eliminar.setBounds(175, 210, 150, 30);
+        Otros.setBounds(175, 210, 150, 30);
         Cohete.setBounds(175, 210, 150, 30);
         Comercial.setBounds(175, 210, 150, 30);
         Salir.setBounds(175, 270, 150, 30);
@@ -163,18 +163,18 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar8.setBounds(175, 310, 150, 30);
         Agregar9.setBounds(175, 310, 150, 30);
         Agregar10.setBounds(175, 310, 150, 30);
-        // añadimos funciones
+        //Añadimos funciones
         add(Agregar);
         add(ListGen);
         add(ListTec);
-        add(Eliminar);
+        add(Otros);
         add(Salir);
-        // añadimos aeronaves
+        //Añadimos aeronaves
         add(Avion);
         add(Helicoptero);
         add(Aerostato);
         add(Cohete);
-        // añadimos especificas
+        //Añadimos especificas
         add(MilitarA);
         add(Comercial);
         add(Carga);
@@ -219,19 +219,19 @@ public class Hangar extends JFrame implements ActionListener {
         add(Etiqueta5);
         add(Etiqueta6);
         add(Etiqueta7);
-        //Pa q funcionen los botones
-        // Las funciones
+        //Listeners para los eventos
+        //Las funciones
         Agregar.addActionListener(this);
         ListGen.addActionListener(this);
         ListTec.addActionListener(this);
-        Eliminar.addActionListener(this);
+        Otros.addActionListener(this);
         Salir.addActionListener(this);
-        // Las aeronaves
+        //Las aeronaves
         Avion.addActionListener(this);
         Helicoptero.addActionListener(this);
         Aerostato.addActionListener(this);
         Cohete.addActionListener(this);
-        // especificos
+        //Tipo especificos
         MilitarA.addActionListener(this);
         MilitarH.addActionListener(this);
         Comercial.addActionListener(this);
@@ -252,12 +252,11 @@ public class Hangar extends JFrame implements ActionListener {
         Agregar8.addActionListener(this);
         Agregar9.addActionListener(this);
         Agregar10.addActionListener(this);
-        //Ocultamos los q no son funciones
+        //Ocultamos los que no son funciones
         Avion.setVisible(false);
         Helicoptero.setVisible(false);
         Aerostato.setVisible(false);
         Cohete.setVisible(false);
-        //especificos
         MilitarA.setVisible(false);
         MilitarH.setVisible(false);
         Comercial.setVisible(false);
@@ -312,11 +311,12 @@ public class Hangar extends JFrame implements ActionListener {
                 listar();
             }else if(e.getSource() == ListTec){
                 listarEsp();
+                //((Inteface) Avion).preparar();
             }else if (e.getSource() == Agregar) {                
                 Agregar.setVisible(false);
                 ListGen.setVisible(false);
                 ListTec.setVisible(false);
-                Eliminar.setVisible(false);
+                Otros.setVisible(false);
                 Avion.setVisible(true);
                 Helicoptero.setVisible(true);
                 Cohete.setVisible(true);
@@ -570,6 +570,8 @@ public class Hangar extends JFrame implements ActionListener {
                     int brigada = Integer.parseInt(CampoA4.getText());                              
                     MilitarA mA = new MilitarA(altitud, tripulacion, nombre, turbinas, trenAterrizaje, armas, brigada);
                     hangar.registrar(mA);
+                    mA.preparar();
+                    mA.preparar(1);
                     JOptionPane.showMessageDialog(null, "Agregado");  
                     Campo1.setText("");
                     Campo2.setText("");
@@ -596,7 +598,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -615,6 +617,8 @@ public class Hangar extends JFrame implements ActionListener {
                     int pasajeros = Integer.parseInt(CampoA3.getText());                                             
                     Comercial aC = new Comercial(altitud, tripulacion, nombre, turbinas, trenAterrizaje, pasajeros);
                     hangar.registrar(aC);
+                    aC.preparar();
+                    aC.preparar(2);
                     JOptionPane.showMessageDialog(null, "Agregado");  
                     Campo1.setText("");
                     Campo2.setText("");
@@ -639,7 +643,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -659,6 +663,8 @@ public class Hangar extends JFrame implements ActionListener {
                     String manifiesto = CampoA3.getText();
                     Carga car = new Carga(altitud, tripulacion, nombre, turbinas, trenAterrizaje, suministros, manifiesto);
                     hangar.registrar(car);
+                    car.preparar();
+                    car.preparar(3);
                     JOptionPane.showMessageDialog(null, "Agregado");  
                     Campo1.setText("");
                     Campo2.setText("");
@@ -685,7 +691,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -704,6 +710,8 @@ public class Hangar extends JFrame implements ActionListener {
                     String entretenimiento = CampoA4.getText();
                     Privado priv = new Privado(altitud, tripulacion, nombre, turbinas, trenAterrizaje, dueno, entretenimiento);
                     hangar.registrar(priv);
+                    priv.preparar();
+                    priv.preparar(4);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -730,7 +738,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -748,6 +756,8 @@ public class Hangar extends JFrame implements ActionListener {
                     int brigada = Integer.parseInt(CampoH3.getText());                   
                     MilitarH milih = new MilitarH(altitud, tripulacion, nombre, helices, armas, brigada);
                     hangar.registrar(milih);
+                    milih.preparar();
+                    milih.preparar(1);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -771,7 +781,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -790,6 +800,8 @@ public class Hangar extends JFrame implements ActionListener {
                     String equipo = CampoH3.getText();                
                     Rescate resc = new Rescate(altitud, tripulacion, nombre, helices, hospital, equipo);
                     hangar.registrar(resc);
+                    resc.preparar();
+                    resc.preparar(2);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -813,7 +825,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -831,6 +843,8 @@ public class Hangar extends JFrame implements ActionListener {
                     String heladeras = CampoH2.getText();
                     PrivadoH privH = new PrivadoH(altitud, tripulacion, nombre, helices, heladeras);
                     hangar.registrar(privH);
+                    privH.preparar();
+                    privH.preparar(3);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -851,7 +865,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -869,6 +883,8 @@ public class Hangar extends JFrame implements ActionListener {
                     String empresa = CampoAr3.getText();
                     Dirigible dirig = new Dirigible(altitud, tripulacion, nombre, gas, timonel, empresa);
                     hangar.registrar(dirig);
+                    dirig.preparar();
+                    dirig.preparar(1);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -892,7 +908,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -910,6 +926,8 @@ public class Hangar extends JFrame implements ActionListener {
                     int lastre = Integer.parseInt(CampoAr3.getText());
                     GloboAeros globo = new GloboAeros(altitud, tripulacion, nombre, gas, valvula, lastre);
                     hangar.registrar(globo);
+                    globo.preparar();
+                    globo.preparar(2);
                     JOptionPane.showMessageDialog(null, "Agregado"); 
                     Campo1.setText("");
                     Campo2.setText("");
@@ -933,7 +951,7 @@ public class Hangar extends JFrame implements ActionListener {
                     Agregar.setVisible(true);
                     ListGen.setVisible(true);
                     ListTec.setVisible(true);
-                    Eliminar.setVisible(true);  
+                    Otros.setVisible(true);  
                     Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -950,6 +968,8 @@ public class Hangar extends JFrame implements ActionListener {
                 String propulsor = CampoC1.getText();
                 Cohete ch = new Cohete(altitud, tripulacion, nombre, propulsor);
                 hangar.registrar(ch);
+                ch.preparar();
+                ch.preparar(1);
                 JOptionPane.showMessageDialog(null, "Agregado"); 
                 Campo1.setText("");
                 Campo2.setText("");
@@ -967,7 +987,7 @@ public class Hangar extends JFrame implements ActionListener {
                 Agregar.setVisible(true);
                 ListGen.setVisible(true);
                 ListTec.setVisible(true);
-                Eliminar.setVisible(true);  
+                Otros.setVisible(true);  
                 Salir.setBounds(175, 270, 150, 30);
                 }catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "No se pudo convertir a entero");
@@ -1025,9 +1045,9 @@ public class Hangar extends JFrame implements ActionListener {
     public static void listarEsp() {
         try {
             int bandera = 0;
-            for (Aeronave aeronave : hangar.getLista()) {
+            for (Aeronave aeronave : hangar.getLista()) {                
                 //System.out.println(aeronave.listarDatos());
-                JOptionPane.showMessageDialog(null, aeronave.listarDatos());
+                JOptionPane.showMessageDialog(null, aeronave.listarDatos());                                
                 bandera++;
             }
             if (bandera == 0){
